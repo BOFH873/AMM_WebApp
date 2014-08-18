@@ -103,4 +103,15 @@ class User {
         return new User($result->fetch_object());
     }
     
+    public function toString()
+    {
+        $string = "UID: $this->id\n".
+                "  username = $this->username\n".
+                "  password = $this->password\n".
+                "  name = $this->name\n".
+                "  lastname = $this->lastname\n".
+                "  address = $this->address\n";
+        
+        return $string;
+    }
 }
