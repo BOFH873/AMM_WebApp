@@ -57,16 +57,16 @@ abstract class Database {
      */
     public static function safeStart()
     {
-        if (!$this->mysqli)
+        if (!self::$mysqli)
         {
-            $this->mysqli = new mysqli(
+            self::$mysqli = new mysqli(
                     db_host,
                     db_user,
                     db_password,
                     db_name);
         }
         
-        return $this->mysqli->connect_errno;
+        return self::$mysqli->connect_errno;
     }    
     
 }
