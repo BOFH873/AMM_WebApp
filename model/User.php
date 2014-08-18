@@ -103,7 +103,7 @@ class User {
         return new User($result->fetch_object());
     }
     
-    public function toString()
+    public function __toString()
     {
         $string = "UID: $this->id\n".
                 "  username = $this->username\n".
