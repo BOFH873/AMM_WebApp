@@ -1,7 +1,7 @@
 <?php
 
 /*
- * Copyright (C) 2014 drgb
+ * Copyright (C) 2014 BOFH873
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -21,7 +21,7 @@
 /**
  * Description of User
  *
- * @author drgb
+ * @author BOFH873
  */
 class User {
     
@@ -34,7 +34,7 @@ class User {
     // Nome
     private $name;
     // Cognome
-    private $lastname;
+    private $last_name;
     // Indirizzo completo
     private $address;
     
@@ -52,7 +52,7 @@ class User {
         $this->username = $data->username;
         $this->password = $data->password;
         $this->name = $data->name;
-        $this->lastname = $data->last_name;
+        $this->last_name = $data->last_name;
         $this->address = $data->address;
     }
     
@@ -109,7 +109,7 @@ class User {
                 "  username = $this->username\n".
                 "  password = $this->password\n".
                 "  name = $this->name\n".
-                "  lastname = $this->lastname\n".
+                "  lastname = $this->last_name\n".
                 "  address = $this->address\n";
         
         return $string;
