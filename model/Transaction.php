@@ -1,7 +1,7 @@
 <?php
 
 /*
- * Copyright (C) 2014 drgb
+ * Copyright (C) 2014 BOFH873
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -21,8 +21,102 @@
 /**
  * Description of Transaction
  *
- * @author drgb
+ * @author BOFH873
  */
 class Transaction {
-    //put your code here
+    
+    // ID univoco
+    private $id;
+    // ID utente
+    private $user_id;
+    // ID prodotto venduto
+    private $product_id;
+    // Numero di pezzi
+    private $qty;
+    // Totale pagato
+    private $total;
+    // Data vendita
+    private $date;
+    
+    /**
+     * Costruttore privato, verrà chiamato solo all'interno della stessa classe
+     * dai builder.
+     * 
+     * @param Obj $data Oggetto contenente il record della vendita (uno degli
+     *                   oggetti restituiti da fetch_object()).
+     * 
+     */
+    private function __construct($data)
+    {
+        $this->id = $data->id;
+        $this->user_id = $data->user_id;
+        $this->product_id = $data->product_id;
+        $this->qty = $data->qty;
+        $this->total = $data->total;
+        $this->date = $data->date;
+    }
+    
+    /**
+     * Effettua una query del database per estrarre tutti i record delle
+     * vendite.
+     * 
+     * @return array|null Restituisce un array di Transaction popolato con i
+     *                     dati di tutte le vendite.
+     */
+    public static function &getTransactions()
+    {
+        include_once "Database.php";
+        $return_array = array();
+        
+        Database::safeStart();
+        
+        $query = "SELECT * FROM sales;";
+        
+        $result = Database::$mysqli->query($query);
+        while ($row = $result->fetch_object()) {
+            $return_array[] = new Transaction($row);
+        }
+        
+        return $return_array;
+    }
+    
+    /**
+     * Effettua una query del database per estrarre il record delle vendite
+     * relative allo user ID specificato
+     * 
+     * @param int $user_id ID utente da cercare nel database.
+     * 
+     * @return array|null Restituisce un array delle transazioni oppure null se
+     *                     la ricerca non da risultati.
+     */
+    public static function &getTransactionsByID($user_id)
+    {
+        include_once "Database.php";
+        
+        Database::safeStart();
+        
+        $stmt = Database::$mysqli->stmt_init();
+        $query = "SELECT * FROM users WHERE user_id=?;";
+        $stmt->prepare($query);
+        $stmt->bind_param("i", $user_id);
+        $result = $stmt->get_result();
+        
+        while ($row = $result->fetch_object()) {
+            $return_array[] = new Transaction($row);
+        }
+        
+        return $return_array;
+    }
+    
+    public function __toString()
+    {
+        $string = "ID: $this->id\n".
+                "  user_id = $this->user_id\n".
+                "  product_id = $this->product_id\n".
+                "  qty = $this->qty\n".
+                "  total = $this->total\n".
+                "  date = $this->date\n";
+        
+        return $string;
+    }
 }
