@@ -110,12 +110,12 @@ class Transaction {
     
     public function __toString()
     {
-        $string = "ID: $this->id\n".
-                "  user_id = $this->user_id\n".
-                "  product_id = $this->product_id\n".
-                "  qty = $this->qty\n".
-                "  total = $this->total\n".
-                "  date = $this->date\n";
+        $string = "ID: $this->id<br/>\n".
+                "  user_id = $this->user_id<br/>\n".
+                "  product_id = $this->product_id<br/>\n".
+                "  qty = $this->qty<br/>\n".
+                "  total = $this->total<br/>\n".
+                "  date = $this->date<br/>\n";
         
         return $string;
     }
