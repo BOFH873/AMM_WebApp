@@ -118,12 +118,12 @@ class Product {
     
     public function __toString()
     {
-        $string = "ID: $this->id\n".
-                "  name = $this->username\n".
-                "  stock_qty = $this->password\n".
-                "  category_id = $this->name\n".
-                "  price = $this->last_name\n".
-                "  description = $this->address\n";
+        $string = "ID: $this->id<br/>\n".
+                "  name = $this->name<br/>\n".
+                "  stock_qty = $this->stock_qty<br/>\n".
+                "  category_id = $this->category_id<br/>\n".
+                "  price = $this->price<br/>\n".
+                "  description = $this->description<br/>\n";
         
         return $string;
     }
