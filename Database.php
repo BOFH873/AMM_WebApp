@@ -1,7 +1,7 @@
 <?php
 
 /*
- * Copyright (C) 2014 drgb
+ * Copyright (C) 2014 BOFH873
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -41,7 +41,7 @@ const db_port = "3306"; // Porta del db
 /**
  * Description of Database
  *
- * @author drgb
+ * @author BOFH873
  */
 abstract class Database {
     
