@@ -1,7 +1,7 @@
 <?php
 
 /*
- * Copyright (C) 2014 drgb
+ * Copyright (C) 2014 BOFH873
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -21,8 +21,116 @@
 /**
  * Description of Category
  *
- * @author drgb
+ * @author BOFH873
  */
 class Category {
-    //put your code here
+
+    // ID univoco
+    private $id;
+    // Nome
+    private $name;
+    // Array delle sottocategorie
+    private $children;
+    
+    /**
+     * Costruttore privato, verrà chiamato solo all'interno della stessa classe
+     * dai builder.
+     * 
+     * @param array $data Array associativo contenente il record della
+     *                     categoria (uno degli array restituiti da
+     *                     fetch_all()).
+     * 
+     */
+    private function __construct($data)
+    {
+        $this->id = $data["id"];
+        $this->name = $data["name"];
+    }
+    
+    /**
+     * Effettua una query del database per estrarre tutti i record delle
+     * categorie.
+     * 
+     * @param int $top ID della categoria dalla quale partire, di default è 1, 
+     *                  ovvero l'ID della categoria "root".
+     * 
+     * @param array $result Array contenente le risposte del database (ricavato
+     *                       da fetch_all()). Utilizzato solo internamente per 
+     *                       evitare di fare query multiple.
+     * 
+     * @return array|null Restituisce un array di Category popolato con i dati
+     *                     delle categorie di primo livello (parent == 1),
+     *                     oppure con le sottocategorie che hanno parent $top.
+     */
+    public static function &getCategories($top = 1, $result = null)
+    {
+        
+        if (is_null($result))
+        {
+            include_once "Database.php";
+            
+            Database::safeStart();
+
+            $query = "SELECT * FROM categories;";
+
+            $result_mysqli = Database::$mysqli->query($query);
+            $result = $result_mysqli->fetch_all(MYSQLI_ASSOC);
+        }
+        
+//        $result->data_seek(0);
+        
+        $return_array = null;
+        
+        foreach ($result as $row) {
+            if ($row["parent_id"] == $top)
+            {
+                $temp = new Category($row);
+//                if ($top == 1) { echo "$temp->name ";}
+                $temp->children = self::getCategories($temp->id, $result);
+                $return_array[] = $temp;
+            }
+        }
+        
+        return $return_array;
+    }
+
+    /**
+     * Prende in input un array di Category e restituisce una stringa con la
+     * rappresentazione HTML (lista non ordinata) della struttura delle
+     * categorie.
+     * 
+     * @param array $catArray L'array di categorie da stampare.
+     * 
+     * @return string Stringa con la rappresentazione HTML delle categorie
+     */
+    public static function printArray($catArray)
+    {
+        $string = "<ul>\n";
+        foreach ($catArray as $category)
+        {
+            $string .= $category->__toString();
+        }
+        $string .= "</ul>\n";
+        
+        return $string;
+    }
+    
+    public function __toString()
+    {
+        if (!count($this->children))
+        {
+            $string = "<li>$this->name</li>\n";
+        }
+        else
+        {
+            $string = "<li>$this->name\n<ul>";
+            foreach ($this->children as $category)
+            {
+                $string .= $category->__toString();
+            }
+            $string .= "</ul>\n</li>";
+        }
+        
+        return $string;
+    }    
 }
