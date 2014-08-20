@@ -105,12 +105,12 @@ class User {
     
     public function __toString()
     {
-        $string = "UID: $this->id\n".
-                "  username = $this->username\n".
-                "  password = $this->password\n".
-                "  name = $this->name\n".
-                "  lastname = $this->last_name\n".
-                "  address = $this->address\n";
+        $string = "UID: $this->id<br/>\n".
+                "  username = $this->username<br/>\n".
+                "  password = $this->password<br/>\n".
+                "  name = $this->name<br/>\n".
+                "  lastname = $this->last_name<br/>\n".
+                "  address = $this->address<br/>\n";
         
         return $string;
     }
