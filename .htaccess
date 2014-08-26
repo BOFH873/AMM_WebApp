@@ -1,0 +1,7 @@
+RewriteEngine  on
+
+RewriteBase /AMM_WebApp
+
+RewriteRule    ^test/?(.*)$  test.php?page=$1 [QSA,END]
+
+RewriteRule    ^(.*)$  index.php?page=$1 [QSA]
