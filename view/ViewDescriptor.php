@@ -29,7 +29,7 @@ class ViewDescriptor {
     /**
      * @var string Stringa contenente il titolo della pagina. 
      */
-    private $title;
+    private $title = "AMM_WebApp";
     
     /**
      * @var array Array di stringhe che puntano ai file contenenti il codice
@@ -40,39 +40,42 @@ class ViewDescriptor {
     /**
      * @var string Stringa contenente il nome del file col codice dell'header.
      */
-    private $headerFile;
+    private $headerFile = "{__DIR__}/view/default/headerFile.php";
 
     /**
      * @var string Stringa contenente il nome del file col codice del pannello
      *             di navigazione in cima.
      */
-    private $topPanelNavFile;
+    private $topPanelNavFile = "{__DIR__}/view/default/topPanelNavFile.php";
 
     /**
      * @var string Stringa contenente il nome del file col codice del pannello
      *             utente (in cima).
      */
-    private $topPanelUserFile;
+    private $topPanelUserFile = "{__DIR__}/view/default/topPanelUserFile.php";
     
     /**
      * @var string Stringa contenente il nome del file col codice del pannello
      *             laterale di sinistra.
      */
-    private $leftPanelFile;
+    private $leftPanelFile = "{__DIR__}/view/default/leftPanelFile.php";
     
     /**
      * @var string Stringa contenente il nome del file col codice del contenuto
      *             principale della pagina.
      */
-    private $contentFile;
+    private $contentFile = "{__DIR__}/view/default/contentFile.php";
 
     /**
      * @var string Stringa contenente il nome del file col codice del footer.
      */
-    private $footerFile;
+    private $footerFile = "{__DIR__}/view/default/footerFile.php";
     
     
-
+    public function __construct()
+    {
+        $this->scripts = array();
+    }
     
     
     /**

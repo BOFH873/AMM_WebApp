@@ -64,7 +64,7 @@ class User {
      */
     public static function &getUsers()
     {
-        include_once "Database.php";
+        include_once "{__DIR__}/../Database.php";
         $return_array = array();
         
         Database::safeStart();

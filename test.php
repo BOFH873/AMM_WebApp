@@ -26,7 +26,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         <p>
             <h2>User test:</h2>
             <?php        
-                include_once "model/User.php";
+                include_once "{__DIR__}/model/User.php";
                 $users = User::getUsers();
                 foreach ($users as $user)
                 {
@@ -37,7 +37,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         <p>
             <h2>Category test:</h2>
             <?php   
-                include_once "model/Category.php";
+                include_once "{__DIR__}/model/Category.php";
                 
                 echo Category::printArray(Category::getCategories());
             ?>
