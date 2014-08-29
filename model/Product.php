@@ -71,7 +71,7 @@ class Product {
         if (!$disabled) { $disabled_string = " WHERE disabled=false"; }
         else { $disabled_string = "";}
         
-        include_once "{__DIR__}/../Database.php";
+        include_once __DIR__."/../Database.php";
         $return_array = array();
         
         Database::safeStart();

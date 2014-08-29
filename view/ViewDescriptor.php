@@ -29,7 +29,7 @@ class ViewDescriptor {
     /**
      * @var string Stringa contenente il titolo della pagina. 
      */
-    private $title = "AMM_WebApp";
+    private $title;
     
     /**
      * @var array Array di stringhe che puntano ai file contenenti il codice
@@ -40,41 +40,48 @@ class ViewDescriptor {
     /**
      * @var string Stringa contenente il nome del file col codice dell'header.
      */
-    private $headerFile = "{__DIR__}/view/default/headerFile.php";
+    private $headerFile;
 
     /**
      * @var string Stringa contenente il nome del file col codice del pannello
      *             di navigazione in cima.
      */
-    private $topPanelNavFile = "{__DIR__}/view/default/topPanelNavFile.php";
+    private $topPanelNavFile;
 
     /**
      * @var string Stringa contenente il nome del file col codice del pannello
      *             utente (in cima).
      */
-    private $topPanelUserFile = "{__DIR__}/view/default/topPanelUserFile.php";
+    private $topPanelUserFile;
     
     /**
      * @var string Stringa contenente il nome del file col codice del pannello
      *             laterale di sinistra.
      */
-    private $leftPanelFile = "{__DIR__}/view/default/leftPanelFile.php";
+    private $leftPanelFile;
     
     /**
      * @var string Stringa contenente il nome del file col codice del contenuto
      *             principale della pagina.
      */
-    private $contentFile = "{__DIR__}/view/default/contentFile.php";
+    private $contentFile;
 
     /**
      * @var string Stringa contenente il nome del file col codice del footer.
      */
-    private $footerFile = "{__DIR__}/view/default/footerFile.php";
+    private $footerFile;
     
     
     public function __construct()
     {
+        $this->title = "AMM_WebApp";
         $this->scripts = array();
+        $this->headerFile = __DIR__."/view/default/headerFile.php";
+        $this->topPanelNavFile = __DIR__."/view/default/topPanelNavFile.php";
+        $this->topPanelUserFile = __DIR__."/view/default/topPanelUserFile.php";
+        $this->leftPanelFile = __DIR__."/view/default/leftPanelFile.php";
+        $this->contentFile = __DIR__."/view/default/contentFile.php";
+        $this->footerFile = __DIR__."/view/default/footerFile.php";
     }
     
     

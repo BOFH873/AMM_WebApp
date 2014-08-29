@@ -65,7 +65,7 @@ class Transaction {
      */
     public static function &getTransactions()
     {
-        include_once "{__DIR__}/../Database.php";
+        include_once __DIR__."/../Database.php";
         $return_array = array();
         
         Database::safeStart();

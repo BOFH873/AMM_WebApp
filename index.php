@@ -18,7 +18,7 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-require_once "{__DIR__}/view/ViewDescriptor.php";
+require_once __DIR__."/view/ViewDescriptor.php";
 
 date_default_timezone_set("Europe/Rome");
 
@@ -27,11 +27,11 @@ session_start();
 switch ($_REQUEST["page"]) {
 
     case "user":
-        require_once "{__DIR__}/controller/user.php";
+        require_once __DIR__."/controller/user.php";
         break;    
 
     default:
-        require_once "{__DIR__}/controller/default.php";
+        require_once __DIR__."/controller/default.php";
         break;
     
 }
