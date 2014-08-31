@@ -2,6 +2,8 @@ RewriteEngine  on
 
 RewriteBase /AMM_WebApp
 
+RewriteRule    ^((css|images)/.*)$ $1 [END]
+
 RewriteRule    ^test(/(.*))?$  test.php?page=$2 [QSA,END]
 
 RewriteRule    ^(.*)$  index.php?page=$1 [QSA]
