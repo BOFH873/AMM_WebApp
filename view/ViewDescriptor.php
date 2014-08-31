@@ -76,12 +76,12 @@ class ViewDescriptor {
     {
         $this->title = "AMM_WebApp";
         $this->scripts = array();
-        $this->headerFile = __DIR__."/view/default/headerFile.php";
-        $this->topPanelNavFile = __DIR__."/view/default/topPanelNavFile.php";
-        $this->topPanelUserFile = __DIR__."/view/default/topPanelUserFile.php";
-        $this->leftPanelFile = __DIR__."/view/default/leftPanelFile.php";
-        $this->contentFile = __DIR__."/view/default/contentFile.php";
-        $this->footerFile = __DIR__."/view/default/footerFile.php";
+        $this->headerFile = __DIR__."/default/headerFile.php";
+        $this->topPanelNavFile = __DIR__."/default/topPanelNavFile.php";
+        $this->topPanelUserFile = __DIR__."/default/topPanelUserFile.php";
+        $this->leftPanelFile = __DIR__."/default/leftPanelFile.php";
+        $this->contentFile = __DIR__."/default/contentFile.php";
+        $this->footerFile = __DIR__."/default/footerFile.php";
     }
     
     
