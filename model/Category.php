@@ -31,7 +31,7 @@ class Category {
     private $name;
     // Array delle sottocategorie
     private $children;
-    
+
     /**
      * Costruttore privato, verrà chiamato solo all'interno della stessa classe
      * dai builder.
@@ -132,5 +132,30 @@ class Category {
         }
         
         return $string;
-    }    
+    }        
+    
+    public function getId() {
+        return $this->id;
+    }
+
+    public function getName() {
+        return $this->name;
+    }
+
+    public function getChildren() {
+        return $this->children;
+    }
+
+    public function setId($id) {
+        $this->id = $id;
+    }
+
+    public function setName($name) {
+        $this->name = $name;
+    }
+
+    public function setChildren($children) {
+        $this->children = $children;
+    }
+
 }
