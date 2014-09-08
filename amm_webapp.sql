@@ -1,8 +1,8 @@
--- MySQL dump 10.15  Distrib 10.0.12-MariaDB, for Linux (x86_64)
+-- MySQL dump 10.14  Distrib 5.5.32-MariaDB, for Linux (x86_64)
 --
 -- Host: localhost    Database: amm_webapp
 -- ------------------------------------------------------
--- Server version	10.0.12-MariaDB-log
+-- Server version	5.5.32-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -61,7 +61,7 @@ CREATE TABLE `products` (
   PRIMARY KEY (`id`),
   KEY `category_id` (`category_id`),
   CONSTRAINT `products_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`) ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -70,6 +70,7 @@ CREATE TABLE `products` (
 
 LOCK TABLES `products` WRITE;
 /*!40000 ALTER TABLE `products` DISABLE KEYS */;
+INSERT INTO `products` VALUES (1,'Creative Speakers',10,20,10.99,'Such speakers, much wow. Bla bla bla casse bla bla bla prodotto bla bla bla comprare','asidbasd',0),(2,'Lenovo Desktop i7',2,12,1000.99,'Uber cool Gaming Desktop PC. Winblows incluso, mouse e tastiera vecchi come il cucco.',NULL,0),(3,'Samsung Laptop Q45',1,16,849.99,'Portatile Samsung molto molto molto portatile. Puoi portarlo davvero dappertutto! Cucina, bagno, auto, aereo, non teme niente!',NULL,0);
 /*!40000 ALTER TABLE `products` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -143,4 +144,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-08-27 12:15:14
+-- Dump completed on 2014-09-08 16:49:51
