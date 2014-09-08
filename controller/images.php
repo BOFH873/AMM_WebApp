@@ -34,7 +34,8 @@ switch ($_REQUEST["type"]) {
         }
         
 //        header("Content-type: image/png");
-        echo $result->fetch_object()->picture;
+        echo $result->getPicture();
+//        var_dump($result);
         break;
     
     default:
