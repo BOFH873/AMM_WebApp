@@ -99,6 +99,7 @@ class Transaction {
         $query = "SELECT * FROM users WHERE user_id=?;";
         $stmt->prepare($query);
         $stmt->bind_param("i", $user_id);
+        $stmt->execute();
         $result = $stmt->get_result();
         
         while ($row = $result->fetch_object()) {
