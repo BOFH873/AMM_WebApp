@@ -76,7 +76,17 @@ class Product {
         
         Database::safeStart();
         
-        $query = "SELECT * FROM products".$disabled_string.";";
+        $query = "SELECT"
+                . " id,"
+                . " name,"
+                . " stock_qty,"
+                . " category_id,"
+                . " price,"
+                . " description,"
+                . " disabled"
+                . " FROM products"
+                . $disabled_string
+                . ";";
         
         $result = Database::$mysqli->query($query);
         while ($row = $result->fetch_object()) {
@@ -98,7 +108,7 @@ class Product {
      */
     public static function &getProductsByName($pattern)
     {
-        include_once "Database.php";
+        include_once __DIR__."/../Database.php";
         $return_array = array();
         
         Database::safeStart();
@@ -107,6 +117,7 @@ class Product {
         $query = "SELECT * FROM products WHERE name LIKE ?;";
         $stmt->prepare($query);
         $stmt->bind_param("s", $pattern);
+        $stmt->execute();
         $result = $stmt->get_result();
         
         while ($row = $result->fetch_object()) {
@@ -116,6 +127,81 @@ class Product {
         return $return_array;
     }
     
+    /**
+     * Effettua una query del database per estrarre i dati del prodotto con l'id
+     * specificato
+     * 
+     * @param int $id ID del prodotto desiderato.
+     * 
+     * @return mysqli_result|false Restituisce un mysqli_result con un solo
+     *                             elemento se la query è andata a buon fine,
+     *                             altrimenti restituisce false.
+     */
+    public static function &getProductByID($id)
+    {
+        include_once __DIR__."/../Database.php";
+
+        Database::safeStart();
+
+        $stmt = Database::$mysqli->stmt_init();
+        $query = "SELECT * FROM products WHERE id=? LIMIT 1;";
+        $stmt->prepare($query);
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        
+        return $result;
+    }
+    
+    public function getId() {
+        return $this->id;
+    }
+
+    public function getName() {
+        return $this->name;
+    }
+
+    public function getStock_qty() {
+        return $this->stock_qty;
+    }
+
+    public function getCategory_id() {
+        return $this->category_id;
+    }
+
+    public function getPrice() {
+        return $this->price;
+    }
+
+    public function getDescription() {
+        return $this->description;
+    }
+
+    public function setId($id) {
+        $this->id = $id;
+    }
+
+    public function setName($name) {
+        $this->name = $name;
+    }
+
+    public function setStock_qty($stock_qty) {
+        $this->stock_qty = $stock_qty;
+    }
+
+    public function setCategory_id($category_id) {
+        $this->category_id = $category_id;
+    }
+
+    public function setPrice($price) {
+        $this->price = $price;
+    }
+
+    public function setDescription($description) {
+        $this->description = $description;
+    }
+
+        
     public function __toString()
     {
         $string = "ID: $this->id<br/>\n".
