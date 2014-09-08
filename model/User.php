@@ -98,6 +98,7 @@ class User {
         $query = "SELECT * FROM users WHERE username=? LIMIT 1;";
         $stmt->prepare($query);
         $stmt->bind_param("s", $username);
+        $stmt->execute();
         $result = $stmt->get_result();
         
         return new User($result->fetch_object());
