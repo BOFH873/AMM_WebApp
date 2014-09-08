@@ -19,4 +19,22 @@
  */
 
 require_once __DIR__."/../view/ViewDescriptor.php";
+require_once __DIR__."/../model/Category.php";
+require_once __DIR__."/../model/Product.php";
+
+
+$vd = new ViewDescriptor();
+
+/*
+ * Richiesto da leftPanelFile.php
+ */
+$categories = Category::getCategories();
+
+/*
+ * Richiesti da contentFile.php
+ */
+$products = Product::getProducts();
+$categoriesArray = Category::getCategoriesArray();
+
+require_once __DIR__."/../view/master.php";
 
