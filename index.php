@@ -28,8 +28,8 @@ switch ($_REQUEST["page"]) {
 
     case "user":
         require_once __DIR__."/controller/user.php";
-        break;    
-
+        break;
+    
     default:
         require_once __DIR__."/controller/default.php";
         break;
