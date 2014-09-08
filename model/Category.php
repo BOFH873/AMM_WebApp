@@ -77,7 +77,6 @@ class Category {
             $result = $result_mysqli->fetch_all(MYSQLI_ASSOC);
         }
         
-//        $result->data_seek(0);
         
         $return_array = null;
         
@@ -85,7 +84,6 @@ class Category {
             if ($row["parent_id"] == $top)
             {
                 $temp = new Category($row);
-//                if ($top == 1) { echo "$temp->name ";}
                 $temp->children = self::getCategories($temp->id, $result);
                 $return_array[] = $temp;
             }
@@ -93,7 +91,36 @@ class Category {
         
         return $return_array;
     }
+    
+    /**
+     * Effettua una query del database per estrarre tutti i record delle
+     * categorie, restituendole sotto forma di array e non di albero.
+     * 
+     * @return array|null Restituisce un array di Category popolato con i dati
+     *                    di tutte le categorie, senza distinzioni di livello.
+     */
+    public static function &getCategoriesArray()
+    {
+        
+        include_once __DIR__."/../Database.php";
 
+        Database::safeStart();
+
+        $query = "SELECT * FROM categories;";
+
+        $result_mysqli = Database::$mysqli->query($query);
+        $result = $result_mysqli->fetch_all(MYSQLI_ASSOC);
+
+        $return_array = null;
+        
+        foreach ($result as $row)
+        {
+            $return_array[] = new Category($row);
+        }
+        
+        return $return_array;
+    }
+        
     /**
      * Prende in input un array di Category e restituisce una stringa con la
      * rappresentazione HTML (lista non ordinata) della struttura delle
