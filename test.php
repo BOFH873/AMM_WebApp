@@ -43,6 +43,19 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
             ?>
         </p>
         <p>
+            <h2>Products test:</h2>
+            <?php   
+                include_once __DIR__."/model/Product.php";
+                
+                $products = Product::getProducts();
+                
+                for ($i=0; $i < count($products); $i++)
+                {
+                    echo $products[$i];
+                }
+            ?>
+        </p>
+        <p>
             <h2>Redirect test:</h2>
             <?php if (isset($_REQUEST["page"])) { ?>
                 page: <?= $_REQUEST["page"] ?>
@@ -50,6 +63,20 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                 page UNSET
             <?php } ?>
         </p>
+        <p>
+            <h2>Image Request test:</h2>
+            <?php if (isset($_REQUEST["type"])) { ?>
+                type: <?= $_REQUEST["type"] ?>
+            <?php } else { ?>
+                type UNSET
+            <?php } ?>
+                <br/>
+            <?php if (isset($_REQUEST["id"])) { ?>
+                id: <?= $_REQUEST["id"] ?>
+            <?php } else { ?>
+                id UNSET
+            <?php } ?>
+         </p>
         <p>
             <h2>Sample test:</h2>
         </p>
