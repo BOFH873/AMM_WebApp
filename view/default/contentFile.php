@@ -32,7 +32,7 @@
         $string .= ">\n";
         
         $string .= "<img src=\"images/dummy.png\" alt=\"".$products[$i]->getName()
-                ." IMAGE\" width=\"240\" height=\"180\">\n";
+                ." IMAGE\" width=\"230\" height=\"180\">\n";
         $string .= "<p class=\"product-name\">".$products[$i]->getName()."</p>\n";
         
         foreach($categoriesArray as $category)
