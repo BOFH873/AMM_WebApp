@@ -2,7 +2,11 @@ RewriteEngine  on
 
 RewriteBase /AMM_WebApp
 
-RewriteRule    ^((css|images)/.*)$ $1 [END]
+#RewriteRule    ^((css|images)/.*)$ $1 [END]
+RewriteRule    ^(css/.*)$ $1 [END]
+
+RewriteRule    ^images(/([^/]*)/?(.*))?$ controller/images.php?type=$2&id=$3 [END]
+#RewriteRule    ^images(/([^/]*)/?(.*))?$ test.php?type=$2&id=$3 [END]
 
 RewriteRule    ^test(/(.*))?$  test.php?page=$2 [QSA,END]
 
