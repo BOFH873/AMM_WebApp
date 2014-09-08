@@ -5,6 +5,7 @@ RewriteBase /AMM_WebApp
 #RewriteRule    ^((css|images)/.*)$ $1 [END]
 RewriteRule    ^(css/.*)$ $1 [END]
 
+RewriteRule    ^(images/[^/]+)$ $1 [END]
 RewriteRule    ^images(/([^/]*)/?(.*))?$ controller/images.php?type=$2&id=$3 [END]
 #RewriteRule    ^images(/([^/]*)/?(.*))?$ test.php?type=$2&id=$3 [END]
 
