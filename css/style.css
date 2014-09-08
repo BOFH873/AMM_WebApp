@@ -21,39 +21,135 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 */
 
 
+@media only screen and (min-width: 1024px) {
 
-/**
- * Regole per implementare le liste ad albero a scomparsa.
- */
+    /**
+     * Regole per la gestione del layout
+     */
 
-ul.collapsible
-{
-    list-style-type: none;
-    padding-left: 0;
+    #page {
+        width: 900px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 25px;
+        margin-bottom:25px;
+    }
+    
+    #logo
+    {
+    }
+    
+    #top-panel
+    {
+        clear: both;
+        width: 100%;
+    }
+    
+    #top-panel-nav
+    {
+        display: inline-block;
+        width: 70%;
+        float: left;
+    }
+
+    #nav-list
+    {
+        padding-left: 0;
+    }
+    
+    #nav-list li
+    {
+        display: inline;
+    }
+    
+    #top-panel-user
+    {
+        text-align: right;
+        display: inline-block;
+        width: 30%;
+        float: right;
+        clear: right;
+    }
+    
+    #left-panel
+    {
+        display: inline-block;
+        width: 18%;
+        float: left;
+    }
+    
+    #content
+    {
+        display: inline-block;
+        width: 82%;
+        clear: right;
+    }
+    
+    /**
+     * Gestione lista prodotti
+     */
+    
+    #products-list
+    {
+        padding-left: 0;
+        list-style-type: none;
+    }
+    
+    #products-list > li
+    {
+        display: inline-block;
+    }
+    
+    #footer
+    {
+        width: 100%;
+        clear: both;
+        text-align: center;
+    }
+    
+    /**
+     * Regole per implementare le liste ad albero a scomparsa.
+     */
+
+    ul.collapsible
+    {
+        list-style-type: none;
+        padding-left: 0;
+    }
+    
+    ul.collapsible label
+    {
+        font-size: 0.8em;
+    }
+
+    ul.collapsible ul.collapsible
+    {
+        padding-left: 20px;
+    }
+
+    ul.collapsible > li > input[type="checkbox"]
+    {
+        display: none;
+    }
+
+    ul.collapsible > li > input[type="checkbox"]  + label
+    {
+        font-weight: bold;
+    }
+
+    ul.collapsible > li > input[type="checkbox"]  + label:before
+    {
+        content: "\25be ";
+    }
+
+    ul.collapsible > li > input[type="checkbox"]:checked  + label:before
+    {
+        content: "\25b8 ";
+    }
+
+    ul.collapsible > li > input[type="checkbox"]:checked ~ ul *
+    {
+        display: none;
+    }
+    
 }
-
-ul.collapsible ul.collapsible
-{
-    padding-left: 20px;
-}
-
-ul.collapsible > li > input[type="checkbox"]
-{
-    display: none;
-}
-
-ul.collapsible > li > input[type="checkbox"]  + label:before
-{
-    content: "\25be ";
-}
-
-ul.collapsible > li > input[type="checkbox"]:checked  + label:before
-{
-    content: "\25b8 ";
-}
-
-ul.collapsible > li > input[type="checkbox"]:checked ~ ul *
-{
-    display: none;
-}
-
