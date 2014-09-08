@@ -37,6 +37,8 @@ class Product {
     private $price;
     // Descrizione completa
     private $description;
+    // Foto del prodotto
+    private $picture;
     
     /**
      * Costruttore privato, verrà chiamato solo all'interno della stessa classe
@@ -54,6 +56,11 @@ class Product {
         $this->category_id = $data->category_id;
         $this->price = $data->price;
         $this->description = $data->description;
+        
+        if (property_exists($data, "picture"))
+        {
+            $this->picture = $data->picture;
+        }
     }
     
     /**
@@ -133,11 +140,10 @@ class Product {
      * 
      * @param int $id ID del prodotto desiderato.
      * 
-     * @return mysqli_result|false Restituisce un mysqli_result con un solo
-     *                             elemento se la query è andata a buon fine,
-     *                             altrimenti restituisce false.
+     * @return    Product|false    Restituisce un Product se la query è andata a
+     *                             buon fine, altrimenti restituisce false.
      */
-    public static function &getProductByID($id)
+    public static function getProductByID($id)
     {
         include_once __DIR__."/../Database.php";
 
@@ -150,7 +156,12 @@ class Product {
         $stmt->execute();
         $result = $stmt->get_result();
         
-        return $result;
+        if ($result->num_rows)
+        {
+            return new Product($result->fetch_object());
+        }
+        
+        return false;
     }
     
     public function getId() {
@@ -176,7 +187,11 @@ class Product {
     public function getDescription() {
         return $this->description;
     }
-
+    
+    public function getPicture() {
+        return $this->picture;
+    }
+    
     public function setId($id) {
         $this->id = $id;
     }
@@ -200,8 +215,12 @@ class Product {
     public function setDescription($description) {
         $this->description = $description;
     }
+    
+    public function setPicture($picture) {
+        $this->picture = $picture;
+    }
 
-        
+            
     public function __toString()
     {
         $string = "ID: $this->id<br/>\n".
