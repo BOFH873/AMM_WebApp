@@ -37,8 +37,19 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
     
     #logo
     {
+        margin: 0;
+        padding: 1em;
+
+        background-color: #5B88A5;
+
+        color: #F4F4F2;
+        text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+        font-family: Verdana, sans-serif;
+        font-weight: bold;
+        font-size: 1.5em;
+
     }
-    
+       
     #top-panel
     {
         clear: both;
@@ -50,11 +61,15 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         display: inline-block;
         width: 70%;
         float: left;
+        
+        background-color: #D4CDC5;
+        border-bottom: thick solid #5B88A5;
+
     }
 
     #nav-list
     {
-        padding-left: 0;
+        padding-left: 1em;
     }
     
     #nav-list li
@@ -69,6 +84,14 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         width: 30%;
         float: right;
         clear: right;
+        
+        background-color: #D4CDC5;
+        border-bottom: thick solid #5B88A5;
+    }
+    
+    #top-panel-user p
+    {
+        padding-right: 1em;
     }
     
     #left-panel
@@ -91,13 +114,31 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
     
     #products-list
     {
-        padding-left: 0;
+        margin: 0;
+        padding-top: 1em;
+        padding-left: 1em;
+        padding-right: 1em;
         list-style-type: none;
+        
     }
     
     #products-list > li
     {
         display: inline-block;
+        text-align: left;
+    }
+    
+    .product-name
+    {
+        margin: 0;
+        padding-top: 0.5em;
+        padding-bottom: 0.5em;
+    }
+    .product-category
+    {
+        margin: 0;
+        padding-top: 0.5em;
+        padding-bottom: 0.5em;
     }
     
     #footer
@@ -107,14 +148,29 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         text-align: center;
     }
     
+    #footer-text
+    {
+        margin: 0;
+        padding: 1em;
+
+        background-color: #5B88A5;
+
+        color: #F4F4F2;
+        font-family: Verdana, sans-serif;
+    }
+    
     /**
      * Regole per implementare le liste ad albero a scomparsa.
      */
 
     ul.collapsible
     {
+        padding-left: 1em;
+        padding-top: 1em;
+        min-height: 250px;
+        background-color: #D4CDC5;
+
         list-style-type: none;
-        padding-left: 0;
     }
     
     ul.collapsible label
@@ -124,7 +180,10 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
     ul.collapsible ul.collapsible
     {
+        min-height: 0;
         padding-left: 20px;
+        padding-top: 0;
+        padding-bottom: 0;
     }
 
     ul.collapsible > li > input[type="checkbox"]
