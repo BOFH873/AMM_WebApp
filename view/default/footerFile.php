@@ -20,6 +20,16 @@
 
 ?>
 
+<?php
+    if ($vd->getErrorMsg())
+    {
+?>
+
+<p id="error-text"><?=$vd->getErrorMsg()?></p>
+
+<?php
+    }
+?>
 <p id="footer-text">
     Progetto realizzato interamente con NetBeans.<br/>
     Autore: Davide Salaris<br/>
