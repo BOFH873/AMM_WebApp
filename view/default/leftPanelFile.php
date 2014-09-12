@@ -57,4 +57,5 @@ function printCat($cat)
 
 ?>
 
+<h4 id="categories-list-title">Categories</h4>
 <?= printCatArray($categories) ?>
