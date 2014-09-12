@@ -18,20 +18,48 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
+/**
+ *  VARIABILI DI CONFIGURAZIONE
+ */
+
+/**
+ *  Directory in cui si trova questo file (a partire dalla DocumentRoot).
+ * 
+ *  Esempio: DocumentRoot = "/srv/httpd/"
+ *           Percorso index.php = "/srv/httpd/AMM_WebApp/index.php"
+ * 
+ *           $appPath -----------> "/AMM_WebApp"
+ */
+$appPath = "/AMM_WebApp";
+
+/**
+ *  FINE VARIABILI DI CONFIGURAZIONE
+ */
+
 require_once __DIR__."/view/ViewDescriptor.php";
 
 date_default_timezone_set("Europe/Rome");
 
+session_name("AMM_WebApp");
 session_start();
 
 switch ($_REQUEST["page"]) {
 
     case "user":
         require_once __DIR__."/controller/user.php";
+        require_once __DIR__."/view/master.php";
         break;
     
+    case "logout":        
+    case "login":
+        require_once __DIR__."/controller/default.php";
+        require_once __DIR__."/controller/login.php";
+        require_once __DIR__."/view/master.php";
+        break;
+        
     default:
         require_once __DIR__."/controller/default.php";
+        require_once __DIR__."/view/master.php";
         break;
     
 }
