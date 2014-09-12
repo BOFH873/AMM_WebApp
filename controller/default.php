@@ -35,6 +35,3 @@ $categories = Category::getCategories();
  */
 $products = Product::getProducts();
 $categoriesArray = Category::getCategoriesArray();
-
-require_once __DIR__."/../view/master.php";
-
