@@ -18,6 +18,28 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-?>
-
-<p>Logged in as: Dummy</p>
+if (isset($_SESSION["id"]))
+{
+    ?>
+    <form id="logged-in">
+        Welcome, <strong><?=$_SESSION["user"]?></strong>
+        <input id="logout-button" type="submit"
+               formaction="<?=$appPath?>/logout"
+               formmethod="post" value="Log out">
+    </form>
+    <?php
+}
+else
+{
+    ?>
+    <form id="login-form">
+        <label id="user-label" for="login-user">User:</label>
+        <input id="login-user" type="text" value="Username" name="user">
+        <label id="pass-label" for="login-pass">Password:</label>
+        <input id="login-pass" type="password" value="Password" name="pass">
+        <input id="login-button" type="submit"
+               formaction="<?=$appPath?>/login"
+               formmethod="post" value="Sign in">
+    </form>
+    <?php
+}
