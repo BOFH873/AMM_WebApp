@@ -63,7 +63,7 @@ class Transaction {
      * @return array|null Restituisce un array di Transaction popolato con i
      *                     dati di tutte le vendite.
      */
-    public static function &getTransactions()
+    public static function getTransactions()
     {
         include_once __DIR__."/../Database.php";
         $return_array = array();
@@ -89,7 +89,7 @@ class Transaction {
      * @return array|null Restituisce un array delle transazioni oppure null se
      *                     la ricerca non da risultati.
      */
-    public static function &getTransactionsByID($user_id)
+    public static function getTransactionsByID($user_id)
     {
         include_once "Database.php";
         

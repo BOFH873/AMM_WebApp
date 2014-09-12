@@ -62,7 +62,7 @@ class Category {
      *                     delle categorie di primo livello (parent == 1),
      *                     oppure con le sottocategorie che hanno parent $top.
      */
-    public static function &getCategories($top = 1, $result = null)
+    public static function getCategories($top = 1, $result = null)
     {
         
         if (is_null($result))
@@ -99,7 +99,7 @@ class Category {
      * @return array|null Restituisce un array di Category popolato con i dati
      *                    di tutte le categorie, senza distinzioni di livello.
      */
-    public static function &getCategoriesArray()
+    public static function getCategoriesArray()
     {
         
         include_once __DIR__."/../Database.php";

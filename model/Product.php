@@ -73,7 +73,7 @@ class Product {
      * @return array|null Restituisce un array di Product popolato con i dati
      *                     di tutti i Prodotti.
      */
-    public static function &getProducts($disabled = 0)
+    public static function getProducts($disabled = 0)
     {
         if (!$disabled) { $disabled_string = " WHERE disabled=false"; }
         else { $disabled_string = "";}
@@ -113,7 +113,7 @@ class Product {
      *                     corrispondono al pattern di ricerca oppure null se
      *                     la ricerca non da risultati.
      */
-    public static function &getProductsByName($pattern)
+    public static function getProductsByName($pattern)
     {
         include_once __DIR__."/../Database.php";
         $return_array = array();
