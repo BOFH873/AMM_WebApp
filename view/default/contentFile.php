@@ -31,8 +31,10 @@
         if ($i >= $maxvisible) { $string .= " class=\"invisible\""; }
         $string .= ">\n";
         
-        $string .= "<img src=\"images/dummy.png\" alt=\"".$products[$i]->getName()
-                ." IMAGE\" width=\"230\" height=\"180\">\n";
+        $string .= "<img src=\"".$appPath."/images/dummy.png\" alt=\""
+                .$products[$i]->getName()
+//                ." IMAGE\" width=\"230\" height=\"180\">\n";
+                ." IMAGE\" class=\"product-image\">\n";
         $string .= "<p class=\"product-name\">".$products[$i]->getName()."</p>\n";
         
         foreach($categoriesArray as $category)
@@ -46,12 +48,11 @@
         
         $string .= "<p class=\"product-category\">$catName</p>\n";
         
-        $string .= "</li>\n";
+        $string .= "</li>";
     
         echo $string;
     }
     
     
     ?>
-    
 </ul>
