@@ -71,6 +71,11 @@ class ViewDescriptor {
      */
     private $footerFile;
     
+    /**
+     * @var string Stringa contenente un messaggio di errore da visualizzare
+     *             nel footer.
+     */
+    private $errorMsg;
     
     public function __construct()
     {
@@ -121,6 +126,10 @@ class ViewDescriptor {
         return $this->footerFile;
     }
 
+    public function getErrorMsg() {
+        return $this->errorMsg;
+    }
+    
     public function setTitle($title) {
         $this->title = $title;
     }
@@ -153,5 +162,7 @@ class ViewDescriptor {
         $this->footerFile = $footerFile;
     }
 
-
+    public function setErrorMsg($errorMsg) {
+        $this->errorMsg = $errorMsg;
+    }
 }
