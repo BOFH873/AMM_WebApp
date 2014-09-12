@@ -62,7 +62,7 @@ class User {
      * @return array|null Restituisce un array di User popolato con i dati
      *                     di tutti gli utenti.
      */
-    public static function &getUsers()
+    public static function getUsers()
     {
         include_once __DIR__."/../Database.php";
         $return_array = array();
@@ -88,7 +88,7 @@ class User {
      * @return User|null Restituisce lo User corrispondente oppure null se la
      *                    query non da risultati.
      */
-    public static function &getUserByUsername($username)
+    public static function getUserByUsername($username)
     {
         include_once "Database.php";
         
@@ -101,7 +101,14 @@ class User {
         $stmt->execute();
         $result = $stmt->get_result();
         
-        return new User($result->fetch_object());
+        if ($result->num_rows)
+        {
+            return new User($result->fetch_object());
+        }
+        else
+        {
+            return null;
+        }
     }
     
     public function __toString()
@@ -115,4 +122,54 @@ class User {
         
         return $string;
     }
+    
+    public function getId() {
+        return $this->id;
+    }
+
+    public function getUsername() {
+        return $this->username;
+    }
+
+    public function getPassword() {
+        return $this->password;
+    }
+
+    public function getName() {
+        return $this->name;
+    }
+
+    public function getLast_name() {
+        return $this->last_name;
+    }
+
+    public function getAddress() {
+        return $this->address;
+    }
+
+    public function setId($id) {
+        $this->id = $id;
+    }
+
+    public function setUsername($username) {
+        $this->username = $username;
+    }
+
+    public function setPassword($password) {
+        $this->password = $password;
+    }
+
+    public function setName($name) {
+        $this->name = $name;
+    }
+
+    public function setLast_name($last_name) {
+        $this->last_name = $last_name;
+    }
+
+    public function setAddress($address) {
+        $this->address = $address;
+    }
+
+
 }
