@@ -26,13 +26,14 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         <meta charset="UTF-8">
         <meta http-equiv="content-type" content="text/html; charset=utf-8">
         
-        <link rel="icon" type="image/x-icon" href="images/favicon.ico">
-        <link href="css/style.css" rel="stylesheet" type="text/css" 
+        <link rel="icon" type="image/x-icon" href="<?=$appPath?>/images/favicon.ico">
+        <link href="<?=$appPath?>/css/style.css" rel="stylesheet" type="text/css" 
               media="screen">
         <?php
             foreach ($vd->getScripts() as $script) {
         ?>
-        <script type="text/javascript" src="<?= $script ?>"></script>
+        <script type="text/javascript" src="<?=$appPath?>/<?= $script ?>">
+        </script>
         <?php
             }
         ?>
