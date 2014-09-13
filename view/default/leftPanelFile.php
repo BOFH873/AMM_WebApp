@@ -57,5 +57,25 @@ function printCat($cat)
 
 ?>
 
+<?php
+if (isset($_SESSION["id"]))
+{
+    if ($_SESSION["user"] == "admin")
+    {
+        ?>
+<h4 id="admin-panel-title">Admin Panel</h4>
+<ul id="admin-panel">
+    <li><a href="<?=$appPath?>/newproduct">New Product</a></li>
+</ul>
+        <?php
+    }
+    ?>
+<h4 id="user-panel-title">User Panel</h4>
+<ul id="user-panel">
+    <li><a href="<?=$appPath?>/user">My Profile</a></li>
+</ul>
+    <?php
+}
+?>
 <h4 id="categories-list-title">Categories</h4>
 <?= printCatArray($categories) ?>
