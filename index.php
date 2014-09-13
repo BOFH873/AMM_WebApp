@@ -52,11 +52,10 @@ switch ($_REQUEST["page"]) {
     
     case "logout":        
     case "login":
-        require_once __DIR__."/controller/default.php";
         require_once __DIR__."/controller/login.php";
         require_once __DIR__."/view/master.php";
         break;
-        
+            
     default:
         require_once __DIR__."/controller/default.php";
         require_once __DIR__."/view/master.php";
