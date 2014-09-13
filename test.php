@@ -58,7 +58,11 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         <p>
             <h2>Redirect test:</h2>
             <?php if (isset($_REQUEST["page"])) { ?>
-                page: <?= $_REQUEST["page"] ?>
+                <?php if ($_REQUEST["page"] == "") { ?>
+                    page SET but empty
+                <?php } else { ?>
+                    page: <?= $_REQUEST["page"] ?>
+                <?php } ?>
             <?php } else { ?>
                 page UNSET
             <?php } ?>
