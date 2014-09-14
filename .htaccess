@@ -1,7 +1,7 @@
 RewriteEngine  on
 
 # Stessa stringa da utilizzare in $appPath
-RewriteBase /AMM_WebApp
+#RewriteBase /AMM_WebApp
 
 #RewriteRule    ^((css|images)/.*)$ $1 [END]
 RewriteRule    ^(css/.*)$ $1 [END]
