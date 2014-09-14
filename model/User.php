@@ -95,7 +95,7 @@ class User {
         Database::safeStart();
         
         $stmt = Database::$mysqli->stmt_init();
-        $query = "SELECT * FROM users WHERE username=? LIMIT 1;";
+        $query = "SELECT * FROM users WHERE username=? LIMIT 1";
         $stmt->prepare($query);
         $stmt->bind_param("s", $username);
         $stmt->execute();
@@ -111,6 +111,48 @@ class User {
         }
     }
     
+    /**
+     * Aggiorna la password dell'utente secondo il valore contenuto nella
+     * proprietà $this->password.
+     */
+    public function updatePass()
+    {
+        include_once "Database.php";
+        
+        Database::safeStart();
+        
+        $stmt = Database::$mysqli->stmt_init();
+        $query = "UPDATE users SET password=? WHERE id=?";
+        $stmt->prepare($query);
+        $stmt->bind_param("ss", $this->password, $this->id);
+        $stmt->execute();
+    }
+    
+    /**
+     * Aggiorna i dati dell'utente secondo i valori contenuti nelle proprietà
+     * $this->name, $this->last_name, $this->address.
+     */
+    public function updateData()
+    {
+        include_once "Database.php";
+        
+        Database::safeStart();
+        
+        $stmt = Database::$mysqli->stmt_init();
+        $query = "UPDATE users SET"
+                ." name=?,"
+                ." last_name=?,"
+                ." address=?"
+                ." WHERE id=?";
+        $stmt->prepare($query);
+        echo $stmt->error;
+        $stmt->bind_param("ssss",
+                $this->name, $this->last_name, $this->address, $this->id);
+        $stmt->execute();
+//        $result = $stmt->get_result();
+        
+    }
+
     public function __toString()
     {
         $string = "UID: $this->id<br/>\n".
