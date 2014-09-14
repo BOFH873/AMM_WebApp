@@ -3,14 +3,12 @@ RewriteEngine  on
 # Stessa stringa da utilizzare in $appPath
 #RewriteBase /AMM_WebApp
 
-RewriteRule    ^deploy\.php$ $1 [END]
+RewriteRule    ^/?deploy\.php$ - [END]
 
-#RewriteRule    ^((css|images)/.*)$ $1 [END]
-RewriteRule    ^(css/.*)$ $1 [END]
+RewriteRule    ^/?css/.+$ - [END]
 
-RewriteRule    ^(images/[^/]+)$ $1 [END]
+RewriteRule    ^/?images/[^/]+$ - [END]
 RewriteRule    ^images(/([^/]*)/?(.*))?$ controller/images.php?type=$2&id=$3 [END]
-#RewriteRule    ^images(/([^/]*)/?(.*))?$ test.php?type=$2&id=$3 [END]
 
 RewriteRule    ^test(/(.*))?$  test.php?page=$2 [QSA,END]
 
