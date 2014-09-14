@@ -25,18 +25,34 @@
 
 const db_host = "localhost"; // Indirizzo del db
 
-const db_user = "amm_webapp"; // Nome utente per il db
+const db_user_local = "amm_webapp"; // Nome utente per il db locale
+const db_user_remote = "salarisDavide"; // Nome utente per il db remoto
 
-const db_password = "ppabew_mma"; // Password per il db
+const db_password_local = "ppabew_mma"; // Password per il db locale
+const db_password_remote = "locusta677"; // Password per il db remoto
 
-const db_name = "amm_webapp"; // Nome del db
+const db_name_local = "amm_webapp"; // Nome del db locale
+const db_name_remote = "amm14_salarisDavide"; // Nome del db remoto
 
 const db_port = "3306"; // Porta del db
-
 
 /**
  * Implementazione comunicazione col database, NON MODIFICARE DA QUI IN POI.
  */
+
+switch ($_SERVER['HTTP_HOST']) {
+    case 'localhost':
+        $db_user_var = db_user_local;
+        $db_password_var = db_password_local;
+        $db_name_var = db_name_local;
+        break;
+    case 'spano.sc.unica.it':
+        $db_user_var = db_user_remote;
+        $db_password_var = db_password_remote;
+        $db_name_var = db_name_remote;
+        break;
+}
+
 
 /**
  * Description of Database
@@ -61,9 +77,9 @@ abstract class Database {
         {
             self::$mysqli = new mysqli(
                     db_host,
-                    db_user,
-                    db_password,
-                    db_name);
+                    $db_user_var,
+                    $db_password_var,
+                    $db_name_var);
         }
         
         return self::$mysqli->connect_errno;

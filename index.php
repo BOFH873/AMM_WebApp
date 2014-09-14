@@ -30,7 +30,17 @@
  * 
  *           $appPath -----------> "/AMM_WebApp"
  */
-$appPath = "/AMM_WebApp";
+$appPath_local = "/AMM_WebApp";
+$appPath_remote = "/amm2014/salarisDavide";
+
+switch ($_SERVER['HTTP_HOST']) {
+    case 'localhost':
+        $appPath = $appPath_local;
+        break;
+    case 'spano.sc.unica.it':
+        $appPath = $appPath_remote;
+        break;
+}
 
 /**
  *  FINE VARIABILI DI CONFIGURAZIONE
