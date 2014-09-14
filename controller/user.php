@@ -44,7 +44,7 @@ function checkPass()
         return "";
     }
     
-    $options = array("options" => array("regexp" => "/[0-9A-Za-z!@#$%_]{8,}/"));
+    $options = array("options" => array("regexp" => "/^[0-9A-Za-z!@#$%_]{8,}$/"));
     
     $new_pass = filter_var($_REQUEST["new-pass"],
             FILTER_VALIDATE_REGEXP,
@@ -82,12 +82,28 @@ function checkPass()
 
 function checkInfo()
 {
-    return "";
-}
-
-function submitData()
-{
+    $name_regexp = array("options" =>
+        array("regexp" => "/^[A-Za-z]+( [A-Za-z]+)*$/"));
+    $address_regexp = array("options" =>
+        array("regexp" => "/^[A-Za-z0-9\/\\,]+( [A-Za-z0-9\/\\,]+)*$/"));
     
+    $name = filter_var($_REQUEST["name"],
+            FILTER_VALIDATE_REGEXP,
+            $name_regexp);
+    if (!$name) {return "Name invalid!</br>\n";}    
+    
+    $lastname = filter_var($_REQUEST["lastname"],
+            FILTER_VALIDATE_REGEXP,
+            $name_regexp);
+    if (!$lastname) {return "Lastname invalid!</br>\n";}    
+    
+    $address = filter_var($_REQUEST["address"],
+            FILTER_VALIDATE_REGEXP,
+            $address_regexp);
+    if (!$address) {return "Address invalid! Allowed chars: (A-Za-z0-9\/,)" .
+            "</br>\n";}    
+    
+    return "";
 }
 
 if (isset($_SESSION["id"]))
@@ -113,9 +129,18 @@ if (isset($_SESSION["id"]))
         
         if ($errorMsg == "")
         {
-            $errorMsg = "Everything's fine! :D";
-//            submitData();
-//            $user = User::getUserByUsername($_SESSION["user"]);    
+            if ($_REQUEST["new-pass"] != "")
+            {
+                $user->setPassword($_REQUEST["new-pass"]);
+                $user->updatePass();
+            }
+            
+            $user->setName($_REQUEST["name"]);
+            $user->setLast_name($_REQUEST["lastname"]);
+            $user->setAddress($_REQUEST["address"]);
+            $user->updateData();
+            
+            $user = User::getUserByUsername($_SESSION["user"]);    
         }
     }    
 
