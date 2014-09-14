@@ -37,8 +37,7 @@ class Category {
      * dai builder.
      * 
      * @param array $data Array associativo contenente il record della
-     *                     categoria (uno degli array restituiti da
-     *                     fetch_all()).
+     *                     categoria.
      * 
      */
     private function __construct($data)
@@ -54,9 +53,9 @@ class Category {
      * @param int $top ID della categoria dalla quale partire, di default è 1, 
      *                  ovvero l'ID della categoria "root".
      * 
-     * @param array $result Array contenente le risposte del database (ricavato
-     *                       da fetch_all()). Utilizzato solo internamente per 
-     *                       evitare di fare query multiple.
+     * @param array $result Array contenente le risposte del database.
+     *                      Utilizzato solo internamente per evitare di fare
+     *                      query multiple.
      * 
      * @return array|null Restituisce un array di Category popolato con i dati
      *                     delle categorie di primo livello (parent == 1),
@@ -73,8 +72,12 @@ class Category {
 
             $query = "SELECT * FROM categories;";
 
-            $result_mysqli = Database::$mysqli->query($query);
-            $result = $result_mysqli->fetch_all(MYSQLI_ASSOC);
+            $result_mysqli = Database::$mysqli->query($query);       
+            $result = array();
+            while ($row = $result->fetch_assoc())
+            {
+                $result[] = $row;
+            }
         }
         
         
@@ -109,7 +112,11 @@ class Category {
         $query = "SELECT * FROM categories;";
 
         $result_mysqli = Database::$mysqli->query($query);
-        $result = $result_mysqli->fetch_all(MYSQLI_ASSOC);
+        $result = array();
+        while ($row = $result->fetch_assoc())
+        {
+            $result[] = $row;
+        }
 
         $return_array = null;
         
