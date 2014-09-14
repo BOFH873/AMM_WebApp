@@ -3,7 +3,7 @@ RewriteEngine  on
 # Stessa stringa da utilizzare in $appPath
 #RewriteBase /AMM_WebApp
 
-RewriteRule ^deploy.php$ $1 [END]
+RewriteRule    ^deploy\.php$ $1 [END]
 
 #RewriteRule    ^((css|images)/.*)$ $1 [END]
 RewriteRule    ^(css/.*)$ $1 [END]
