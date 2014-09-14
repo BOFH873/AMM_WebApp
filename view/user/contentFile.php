@@ -20,7 +20,7 @@
 
 ?>
 
-<form id="profile-form">
+<form id="profile-form" class="contentform">
     <p>
         <label for="user-field">User: </label><input
             id="user-field"
@@ -67,7 +67,7 @@
             name="address"
             value="<?=$user->getAddress()?>">
     </p>
-    <p id="submit-paragraph">
+    <p class="submit-paragraph">
         <input id="user-submit"
                 type="submit"
                 formaction="<?=$appPath?>/user"
