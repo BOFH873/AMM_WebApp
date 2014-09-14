@@ -50,6 +50,11 @@ switch ($_REQUEST["page"]) {
         require_once __DIR__."/view/master.php";
         break;
     
+    case "newproduct":
+        require_once __DIR__."/controller/newproduct.php";
+        require_once __DIR__."/view/master.php";
+        break;
+    
     case "logout":        
     case "login":
         require_once __DIR__."/controller/login.php";
