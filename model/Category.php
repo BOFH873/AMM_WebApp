@@ -74,7 +74,7 @@ class Category {
 
             $result_mysqli = Database::$mysqli->query($query);       
             $result = array();
-            while ($row = $result->fetch_assoc())
+            while ($row = $result_mysqli->fetch_assoc())
             {
                 $result[] = $row;
             }
@@ -113,7 +113,7 @@ class Category {
 
         $result_mysqli = Database::$mysqli->query($query);
         $result = array();
-        while ($row = $result->fetch_assoc())
+        while ($row = $result_mysqli->fetch_assoc())
         {
             $result[] = $row;
         }
