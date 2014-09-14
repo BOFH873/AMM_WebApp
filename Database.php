@@ -40,6 +40,10 @@ const db_port = "3306"; // Porta del db
  * Implementazione comunicazione col database, NON MODIFICARE DA QUI IN POI.
  */
 
+global $db_user_var;
+global $db_password_var;
+global $db_name_var;
+
 switch ($_SERVER['HTTP_HOST']) {
     case 'localhost':
         $db_user_var = db_user_local;
@@ -75,6 +79,11 @@ abstract class Database {
     {
         if (!self::$mysqli)
         {
+            
+            global $db_user_var;
+            global $db_password_var;
+            global $db_name_var;
+                        
             self::$mysqli = new mysqli(
                     db_host,
                     $db_user_var,
