@@ -95,15 +95,37 @@ class User {
         Database::safeStart();
         
         $stmt = Database::$mysqli->stmt_init();
-        $query = "SELECT * FROM users WHERE username=? LIMIT 1";
+        $query = "SELECT"
+                . " id,"
+                . " username,"
+                . " password,"
+                . " name,"
+                . " last_name,"
+                . " address, "
+                . " disabled"
+                . " FROM users"
+                . " WHERE username=?"
+                . " LIMIT 1;"
         $stmt->prepare($query);
         $stmt->bind_param("s", $username);
         $stmt->execute();
-        $result = $stmt->get_result();
         
-        if ($result->num_rows)
+        $obj = new stdClass();
+        
+        $stmt->bind_result($obj->id,
+                $obj->username,
+                $obj->password,
+                $obj->name,
+                $obj->last_name,
+                $obj->address,
+                $obj->disabled);
+        
+        $result_meta = $stmt->result_metadata();
+        
+        if ($result_meta->num_rows)
         {
-            return new User($result->fetch_object());
+            $stmt->fetch();
+            return new User($obj);
         }
         else
         {
@@ -149,7 +171,6 @@ class User {
         $stmt->bind_param("ssss",
                 $this->name, $this->last_name, $this->address, $this->id);
         $stmt->execute();
-//        $result = $stmt->get_result();
         
     }
 
