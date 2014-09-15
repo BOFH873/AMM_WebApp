@@ -135,7 +135,7 @@ class Product {
         $stmt->prepare($query);
         $stmt->bind_param("s", $pattern);
         $stmt->execute();
-        
+        $stmt->store_result();        
         
         $obj = new stdClass();
         
@@ -152,13 +152,7 @@ class Product {
         {
             $return_array[] = new Product($obj);
         }
-        
-/*        $result = $stmt->get_result();
-        
-        while ($row = $result->fetch_object()) {
-            $return_array[] = new Product($row);
-        }*/
-        
+                
         return $return_array;
     }
     
@@ -192,6 +186,7 @@ class Product {
         $stmt->prepare($query);
         $stmt->bind_param("i", $id);
         $stmt->execute();
+        $stmt->store_result();
         
         $obj = new stdClass();
         
@@ -204,9 +199,7 @@ class Product {
                 $obj->picture,
                 $obj->disabled);
 
-        $result_meta = $stmt->result_metadata();
-        
-        if ($result_meta->num_rows)
+        if ($stmt->num_rows)
         {
             $stmt->fetch();
             return new Product($obj);

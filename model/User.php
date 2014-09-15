@@ -105,11 +105,12 @@ class User {
                 . " disabled"
                 . " FROM users"
                 . " WHERE username=?"
-                . " LIMIT 1;"
+                . " LIMIT 1;";
         $stmt->prepare($query);
         $stmt->bind_param("s", $username);
         $stmt->execute();
-        
+        $stmt->store_result();
+                
         $obj = new stdClass();
         
         $stmt->bind_result($obj->id,
@@ -119,10 +120,8 @@ class User {
                 $obj->last_name,
                 $obj->address,
                 $obj->disabled);
-        
-        $result_meta = $stmt->result_metadata();
-        
-        if ($result_meta->num_rows)
+                        
+        if ($stmt->num_rows)
         {
             $stmt->fetch();
             return new User($obj);

@@ -96,14 +96,32 @@ class Transaction {
         Database::safeStart();
         
         $stmt = Database::$mysqli->stmt_init();
-        $query = "SELECT * FROM users WHERE user_id=?;";
+        $query = "SELECT"
+                . " id,"
+                . " user_id,"
+                . " product_id,"
+                . " qty,"
+                . " total,"
+                . " date"
+                . " FROM sales"
+                . " WHERE user_id=?"
+                . " LIMIT 1;";
         $stmt->prepare($query);
         $stmt->bind_param("i", $user_id);
         $stmt->execute();
-        $result = $stmt->get_result();
+        $stmt->store_result();
         
-        while ($row = $result->fetch_object()) {
-            $return_array[] = new Transaction($row);
+        $obj = new stdClass();
+        
+        $stmt->bind_result($obj->id,
+                $obj->user_id,
+                $obj->product_id,
+                $obj->qty,
+                $obj->total,
+                $obj->date);
+
+        while ($stmt->fetch()) {
+            $return_array[] = new Transaction($obj);
         }
         
         return $return_array;
