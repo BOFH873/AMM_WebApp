@@ -121,15 +121,43 @@ class Product {
         Database::safeStart();
         
         $stmt = Database::$mysqli->stmt_init();
-        $query = "SELECT * FROM products WHERE name LIKE ?;";
+        $query = "SELECT"
+                . " id,"
+                . " name,"
+                . " stock_qty,"
+                . " category_id,"
+                . " price,"
+                . " description,"
+                . " picture,"
+                . " disabled"
+                . " FROM products"
+                . "WHERE name LIKE ?;";
         $stmt->prepare($query);
         $stmt->bind_param("s", $pattern);
         $stmt->execute();
-        $result = $stmt->get_result();
+        
+        
+        $obj = new stdClass();
+        
+        $stmt->bind_result($obj->id,
+                $obj->name,
+                $obj->stock_qty,
+                $obj->category_id,
+                $obj->price,
+                $obj->description,
+                $obj->picture,
+                $obj->disabled);
+
+        while ($stmt->fetch())
+        {
+            $return_array[] = new Product($obj);
+        }
+        
+/*        $result = $stmt->get_result();
         
         while ($row = $result->fetch_object()) {
             $return_array[] = new Product($row);
-        }
+        }*/
         
         return $return_array;
     }
@@ -150,15 +178,38 @@ class Product {
         Database::safeStart();
 
         $stmt = Database::$mysqli->stmt_init();
-        $query = "SELECT * FROM products WHERE id=? LIMIT 1;";
+        $query = "SELECT"
+                . " id,"
+                . " name,"
+                . " stock_qty,"
+                . " category_id,"
+                . " price,"
+                . " description,"
+                . " picture,"
+                . " disabled"
+                . " FROM products"
+                . " WHERE id=? LIMIT 1;";
         $stmt->prepare($query);
         $stmt->bind_param("i", $id);
         $stmt->execute();
-        $result = $stmt->get_result();
         
-        if ($result->num_rows)
+        $obj = new stdClass();
+        
+        $stmt->bind_result($obj->id,
+                $obj->name,
+                $obj->stock_qty,
+                $obj->category_id,
+                $obj->price,
+                $obj->description,
+                $obj->picture,
+                $obj->disabled);
+
+        $result_meta = $stmt->result_metadata();
+        
+        if ($result_meta->num_rows)
         {
-            return new Product($result->fetch_object());
+            $stmt->fetch();
+            return new Product($obj);
         }
         
         return false;
