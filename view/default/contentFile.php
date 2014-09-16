@@ -31,9 +31,13 @@
         if ($i >= $maxvisible) { $string .= " class=\"invisible\""; }
         $string .= ">\n";
         
-        $string .= "<img src=\"".$appPath."/images/dummy.png\" alt=\""
+        $string .= "<img src=\""
+                .$appPath
+                ."/images/product/"
+                .$products[$i]->getId()
+                . "\""
+                ." alt=\""
                 .$products[$i]->getName()
-//                ." IMAGE\" width=\"230\" height=\"180\">\n";
                 ." IMAGE\" class=\"product-image\">\n";
         $string .= "<p class=\"product-name\">".$products[$i]->getName()."</p>\n";
         
