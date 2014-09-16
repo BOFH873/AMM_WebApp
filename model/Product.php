@@ -190,6 +190,10 @@ class Product {
                 . " FROM products"
                 . " WHERE id=? LIMIT 1;";
         $stmt->prepare($query);
+        
+        var_dump($stmt->error);
+        exit();
+        
         $stmt->bind_param("i", $id);
         $stmt->execute();
         $stmt->store_result();
