@@ -23,7 +23,7 @@
 
     <?php
     
-    $maxvisible = 16;
+    $maxvisible = 9;
     
     for($i=0;$i < count($products); $i++)
     {
@@ -31,14 +31,14 @@
         if ($i >= $maxvisible) { $string .= " class=\"invisible\""; }
         $string .= ">\n";
         
-        $string .= "<img src=\""
+        $string .= "<div class=\"image-container\"><img src=\""
                 .$appPath
                 ."/images/product/"
                 .$products[$i]->getId()
                 . "\""
                 ." alt=\""
                 .$products[$i]->getName()
-                ." IMAGE\" class=\"product-image\">\n";
+                ." IMAGE\" class=\"product-image\"></div>\n";
         $string .= "<p class=\"product-name\">".$products[$i]->getName()."</p>\n";
         
         foreach($categoriesArray as $category)
