@@ -39,6 +39,8 @@ class Product {
     private $description;
     // Foto del prodotto
     private $picture;
+    // Tipo dei dati della foto
+    private $mimetype;
     
     /**
      * Costruttore privato, verrà chiamato solo all'interno della stessa classe
@@ -60,6 +62,7 @@ class Product {
         if (property_exists($data, "picture"))
         {
             $this->picture = $data->picture;
+            $this->mimetype = $data->mimetype;
         }
     }
     
@@ -129,6 +132,7 @@ class Product {
                 . " price,"
                 . " description,"
                 . " picture,"
+                . " mimetype,"
                 . " disabled"
                 . " FROM products"
                 . "WHERE name LIKE ?;";
@@ -146,6 +150,7 @@ class Product {
                 $obj->price,
                 $obj->description,
                 $obj->picture,
+                $obj->mimetype,
                 $obj->disabled);
 
         while ($stmt->fetch())
@@ -180,6 +185,7 @@ class Product {
                 . " price,"
                 . " description,"
                 . " picture,"
+                . " mimetype,"
                 . " disabled"
                 . " FROM products"
                 . " WHERE id=? LIMIT 1;";
@@ -197,6 +203,7 @@ class Product {
                 $obj->price,
                 $obj->description,
                 $obj->picture,
+                $obj->mimetype,
                 $obj->disabled);
 
         if ($stmt->num_rows)
@@ -207,6 +214,51 @@ class Product {
         
         return false;
     }
+    
+    public static function uploadNewProduct($newProduct)
+    {
+        include_once __DIR__."/../Database.php";
+
+        Database::safeStart();
+
+        $stmt = Database::$mysqli->stmt_init();
+        $query = "INSERT INTO products"
+                . " (name,"
+                . " stock_qty,"
+                . " category_id,"
+                . " price,"
+                . " description,"
+                . " picture,"
+                . " mimetype)"
+                . " VALUES"
+                . " (?,"
+                . " ?,"
+                . " ?,"
+                . " ?,"
+                . " ?,"
+                . " LOAD_FILE(?),"
+                . " ?)";
+
+        $stmt->prepare($query);
+                
+        $nullvar = NULL;
+        $stmt->bind_param("siidsss",
+                $newProduct->name,
+                $newProduct->stock_qty,
+                $newProduct->category_id,
+                $newProduct->price,
+                $newProduct->description,
+                
+                property_exists($newProduct, "picture")
+                ? $newProduct->picture
+                : $nullvar,
+                property_exists($newProduct, "picture")
+                ? $newProduct->mimetype
+                : $nullvar);
+
+                $stmt->execute();
+
+   }
     
     public function getId() {
         return $this->id;
@@ -236,6 +288,10 @@ class Product {
         return $this->picture;
     }
     
+    public function getMimetype() {
+        return $this->mimetype;
+    }
+
     public function setId($id) {
         $this->id = $id;
     }
@@ -264,7 +320,10 @@ class Product {
         $this->picture = $picture;
     }
 
-            
+    public function setMimetype($mimetype) {
+        $this->mimetype = $mimetype;
+    }
+
     public function __toString()
     {
         $string = "ID: $this->id<br/>\n".
