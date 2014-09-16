@@ -241,7 +241,13 @@ class Product {
 
         $stmt->prepare($query);
                 
-        $nullvar = NULL;
+        $picValue = property_exists($newProduct, "picture")
+                ? $newProduct->picture
+                : NULL;
+        $mimeValue = property_exists($newProduct, "picture")
+                ? $newProduct->mimetype
+                : NULL;
+
         $stmt->bind_param("siidsss",
                 $newProduct->name,
                 $newProduct->stock_qty,
@@ -249,12 +255,8 @@ class Product {
                 $newProduct->price,
                 $newProduct->description,
                 
-                property_exists($newProduct, "picture")
-                ? $newProduct->picture
-                : $nullvar,
-                property_exists($newProduct, "picture")
-                ? $newProduct->mimetype
-                : $nullvar);
+                $picValue,
+                $mimeValue);
 
                 $stmt->execute();
 
