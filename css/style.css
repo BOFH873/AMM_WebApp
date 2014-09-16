@@ -405,6 +405,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         text-align: left;
     }
     
+    .contentform > p > textarea,
     .contentform > p > select ,
     .contentform > p > input
     {
@@ -413,6 +414,11 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         margin-right: 15%;
         box-sizing: border-box;
         text-align: left;
+    }
+    
+    .contentform > p > #description-field
+    {
+        resize: vertical;
     }
 
     .contentform > p > #qty-field
