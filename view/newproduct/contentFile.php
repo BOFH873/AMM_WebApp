@@ -52,7 +52,9 @@ function printCatTree($catTree)
     <p>
         <label for="qty-field">Qty: </label><input
             id="qty-field"
-            type="text"
+            type="number"
+            min="0"
+            value="0"
             name="qty">
     </p>
     <p>
@@ -70,10 +72,12 @@ function printCatTree($catTree)
             name="price">
     </p>
     <p>
-        <label for="description-field">Description: </label><input
+        <label for="description-field">Description: </label><textarea
             id="description-field"
             type="text"
-            name="description">
+            name="description"
+            rows="5">
+        </textarea>
     </p>
     <p>
         <label for="pic-field">Picture: </label><input
