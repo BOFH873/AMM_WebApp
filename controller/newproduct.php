@@ -107,9 +107,14 @@ function checkPic()
 
     {
         return "Picture must be &lt; 512KB!<br/>\n";
-    }
+    }    
+
+    $size = @getimagesize($_FILES["pic"]["tmp_name"]);
     
-    $size = getimagesize($_FILES["pic"]["tmp_name"]);
+    if (!$size)
+    {
+        return "Error retrieving image size, try again!<br/>\n";
+    }
     
     if (($size[0] < 150)
             || ($size[1] < 100))
