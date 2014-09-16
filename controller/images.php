@@ -33,9 +33,19 @@ switch ($_REQUEST["type"]) {
             exit();
         }
         
-//        header("Content-type: image/png");
-        echo $result->getPicture();
-//        var_dump($result);
+        $pic = $result->getPicture();
+
+        if ($pic != null)
+        {
+            header("Content-type: " . $result->getMimeType());
+            echo $result->getPicture();
+        }
+        else
+        {
+            header("Content-type: image/png");
+            readfile(__DIR__."/../images/noimage.png");
+        }
+
         break;
     
     default:
