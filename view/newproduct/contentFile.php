@@ -18,9 +18,31 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
+function printCatTree($catTree)
+{
+    foreach($catTree as $cat)
+    {
+        $children = $cat->getChildren();
+        if (count($children))
+        {
+            echo "<optgroup label=\"". $cat->getName() ."\">\n";
+            printCatTree($children);
+            echo "</optgroup>\n";
+        }
+        else
+        {
+            echo "<option value=\""
+                    .$cat->getId() 
+                    ."\">"
+                    .$cat->getName()
+                    ."</option>\n";
+        }
+    }
+}
+
 ?>
 
-<form id="newproduct-form" class="contentform">
+<form id="newproduct-form" class="contentform" enctype="multipart/form-data" method="POST">
     <p>
         <label for="pname-field">Name: </label><input
             id="pname-field"
@@ -34,10 +56,12 @@
             name="qty">
     </p>
     <p>
-        <label for="category-field">Category: </label><input
+        <label for="category-field">Category: </label><select
             id="category-field"
             type="text"
             name="category">
+            <?=printCatTree($categories)?>
+        </select>
     </p>
     <p>
         <label for="price-field">Price: </label><input
@@ -62,6 +86,7 @@
                 type="submit"
                 formaction="<?=$appPath?>/newproduct"
                 formmethod="POST"
+                formenctype="multipart/form-data"
                 value="Create product">
     </p>
 </form>
