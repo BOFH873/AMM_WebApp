@@ -40,7 +40,7 @@ function printCat($cat)
         
         if (count($cat->getChildren()))
         {
-            $string .= "<input id=\"cat".$cat->getId()."\" type=\"checkbox\""
+            $string .= "<input name=\"cat".$cat->getId()."\" type=\"checkbox\""
                     . " checked>\n";
             $string .= $labelString;
             $string .= printCatArray($cat->getChildren());
