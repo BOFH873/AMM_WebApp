@@ -36,6 +36,8 @@ const db_name_remote = "amm14_salarisDavide"; // Nome del db remoto
 
 const db_port = "3306"; // Porta del db
 
+global $db_backup_file;
+$db_backup_file = __DIR__ . "/amm_webapp.sql";
 /**
  * Implementazione comunicazione col database, NON MODIFICARE DA QUI IN POI.
  */
@@ -67,6 +69,9 @@ abstract class Database {
     
     // Contenitore oggetto mysqli
     public static $mysqli;
+    
+    // Flag per transazioni
+    private static $transaction = false;
         
     /**
      * Metodo da invocare per l'inizializzazione dell'oggetto mysqli e della
@@ -94,4 +99,55 @@ abstract class Database {
         return self::$mysqli->connect_errno;
     }    
     
+    public static function startTransaction()
+    {
+        self::safeStart();
+        if (!self::$transaction)
+        {
+            self::$transaction = true;
+            self::$mysqli->query("START TRANSACTION;");
+        }
+    }
+    
+    public static function commit()
+    {
+        self::safeStart();
+        if (self::$transaction)
+        {
+            self::$transaction = false;
+            self::$mysqli->query("COMMIT;");
+        }
+    }
+    
+    public static function restoreDB()
+    {
+        global $db_backup_file;
+        
+        self::safeStart();
+        
+        $templine = "";
+        // Apertura file di backup
+        $lines = file($db_backup_file);
+
+        // Parsing di tutte le linee
+        foreach ($lines as $line)
+        {
+            // Salta i commenti
+            if (substr($line, 0, 2) == '--' || $line == '')
+            {
+                continue;
+            }
+            
+            // Aggiunge il segmento attuale alla query finale
+            $templine .= $line;
+            // Se c'è un ; alla fine eseguo la query
+            if (substr(trim($line), -1, 1) == ';')
+            {
+                // Eseguo
+                self::$mysqli->query($templine);
+                // Libero $templine
+                $templine = '';
+            }        
+        }
+    }
 }
