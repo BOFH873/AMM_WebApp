@@ -79,8 +79,12 @@ class ViewDescriptor {
     
     public function __construct()
     {
+        global $appPath;
+        
         $this->title = "AMM_WebApp";
-        $this->scripts = array();
+        $this->scripts = array(
+            $appPath."/scripts/jquery-2.1.1.min.js",
+            $appPath."/scripts/default.js");
         $this->headerFile = __DIR__."/default/headerFile.php";
         $this->topPanelNavFile = __DIR__."/default/topPanelNavFile.php";
         $this->topPanelUserFile = __DIR__."/default/topPanelUserFile.php";
