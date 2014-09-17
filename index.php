@@ -65,6 +65,16 @@ switch ($_REQUEST["page"]) {
         require_once __DIR__."/view/master.php";
         break;
     
+    case "resetdb":
+        require_once __DIR__."/controller/resetdb.php";
+        require_once __DIR__."/view/master.php";
+        break;
+    
+    case "editcat":
+        require_once __DIR__."/controller/editcat.php";
+        require_once __DIR__."/view/master.php";
+        break;
+
     case "logout":        
     case "login":
         require_once __DIR__."/controller/login.php";
