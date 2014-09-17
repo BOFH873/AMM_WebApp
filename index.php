@@ -80,7 +80,11 @@ switch ($_REQUEST["page"]) {
         require_once __DIR__."/controller/login.php";
         require_once __DIR__."/view/master.php";
         break;
-            
+                
+    case "ajax":
+        require_once __DIR__."/controller/ajax.php";
+        break;
+    
     default:
         require_once __DIR__."/controller/default.php";
         require_once __DIR__."/view/master.php";
