@@ -125,7 +125,9 @@ function checkPic()
     return "";
 }
 
-if (isset($_SESSION["id"]))
+if (isset($_SESSION["id"])
+        && isset($_SESSION["user"])
+        && $_SESSION["user"] == "admin")
 {
     require_once __DIR__."/../view/ViewDescriptor.php";
     require_once __DIR__."/../model/Category.php";
@@ -166,14 +168,15 @@ if (isset($_SESSION["id"]))
             }
                     
             Product::uploadNewProduct($data);
+            $errorMsg = "Product added succesfully!<br/>\n";
             
         }
         
-    $vd->setErrorMsg($errorMsg);
+        $vd->setErrorMsg($errorMsg);
     }
 }
 else
 {
     require_once __DIR__."/default.php";
-    $vd->setErrorMsg("You are not logged in!");
+    $vd->setErrorMsg("You don't have admin privileges!");
 }
