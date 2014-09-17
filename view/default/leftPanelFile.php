@@ -66,6 +66,8 @@ if (isset($_SESSION["id"]))
 <h4 id="admin-panel-title">Admin Panel</h4>
 <ul id="admin-panel">
     <li><a href="<?=$appPath?>/newproduct">New Product</a></li>
+    <li><a href="<?=$appPath?>/editcat">Edit Categories</a></li>
+    <li><a href="<?=$appPath?>/resetdb">&#x2620Reset DB&#x2620</a></li>
 </ul>
         <?php
     }
