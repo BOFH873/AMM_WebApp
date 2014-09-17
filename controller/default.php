@@ -25,6 +25,12 @@ require_once __DIR__."/../model/Product.php";
 
 $vd = new ViewDescriptor();
 
+$scripts = array($appPath."/scripts/jquery-2.1.1.min.js",
+            $appPath."/scripts/default.js");
+
+$vd->setScripts($scripts);
+
+
 /*
  * Richiesto da leftPanelFile.php
  */
