@@ -31,6 +31,8 @@ class Category {
     private $name;
     // Array delle sottocategorie
     private $children;
+    // ID del padre
+    private $parent_id;
 
     /**
      * Costruttore privato, verrà chiamato solo all'interno della stessa classe
@@ -44,6 +46,7 @@ class Category {
     {
         $this->id = $data["id"];
         $this->name = $data["name"];
+        $this->parent_id = $data["parent_id"];
     }
     
     /**
@@ -66,7 +69,7 @@ class Category {
         
         if (is_null($result))
         {
-            include_once __DIR__."/../Database.php";
+            require_once __DIR__."/../Database.php";
             
             Database::safeStart();
 
@@ -105,7 +108,7 @@ class Category {
     public static function getCategoriesArray()
     {
         
-        include_once __DIR__."/../Database.php";
+        require_once __DIR__."/../Database.php";
 
         Database::safeStart();
 
@@ -149,6 +152,105 @@ class Category {
         return $string;
     }
     
+    public static function catHierarchyString($catArray, $category)
+    {
+        if ($category->getParent_id() == 1
+                || $category->getParent_id() == NULL)
+        {
+            return $category->getName();
+        }
+        
+        foreach($catArray as $cat)
+        {
+            if ($cat->getId() == $category->getParent_id())
+            {
+                $return_string = self::catHierarchyString($catArray, $cat);
+                $return_string .= " -&gt; "
+                        .$category->getName();
+                return $return_string;
+            }
+        }
+    }
+    
+    public static function createCategory($newCategory)
+    {
+        require_once __DIR__."/../Database.php";
+
+        Database::safeStart();
+
+        $stmt = Database::$mysqli->stmt_init();
+        $query = "INSERT INTO categories"
+                . " (name,"
+                . " parent_id)"
+                . " VALUES"
+                . " (?,"
+                . " ?)";
+
+        $stmt->prepare($query);
+                
+        $stmt->bind_param("si",
+                $newCategory->name,
+                $newCategory->parent_id);
+
+        $stmt->execute();
+
+   }
+
+    public static function updateCategory($editCategory)
+    {
+        require_once __DIR__."/../Database.php";
+        
+        Database::safeStart();
+        
+        $stmt = Database::$mysqli->stmt_init();
+
+        $query = "UPDATE categories SET"
+                ." name=?,"
+                ." parent_id=?"
+                ." WHERE id=?";
+
+        $stmt->prepare($query);
+        $stmt->bind_param("sss",
+                $editCategory->name,
+                $editCategory->parent_id,
+                $editCategory->id);
+
+        $stmt->execute();
+        
+    }
+
+    public static function catChildIdString($category)
+    {
+        $return_string = "";
+
+        $children = $category->children;
+        if (is_array($children))
+        {
+            foreach ($children as $child)
+            {
+                $return_string .= self::catChildIdString($child);
+            }
+        }
+
+        $return_string .= $category->id . ", ";
+
+        return $return_string;
+    }
+   
+    public static function deleteCatAndChildren($category)
+    {
+        require_once __DIR__."/../Database.php";
+        
+        Database::safeStart();
+        
+        $query = "DELETE FROM categories WHERE id IN ("
+                . self::catChildIdString($category)
+                . "-1);";
+
+        Database::$mysqli->query($query);
+        
+    }
+    
     public function __toString()
     {
         if (!count($this->children))
@@ -179,6 +281,10 @@ class Category {
     public function getChildren() {
         return $this->children;
     }
+    
+    public function getParent_id() {
+        return $this->parent_id;
+    }
 
     public function setId($id) {
         $this->id = $id;
@@ -190,6 +296,10 @@ class Category {
 
     public function setChildren($children) {
         $this->children = $children;
+    }
+
+    public function setParent_id($parent_id) {
+        $this->parent_id = $parent_id;
     }
 
 }
