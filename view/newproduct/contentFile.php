@@ -18,14 +18,16 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-function printCatTree($catTree)
+/*function printCatTree($catTree)
 {
     foreach($catTree as $cat)
     {
         $children = $cat->getChildren();
         if (count($children))
         {
-            echo "<optgroup label=\"". $cat->getName() ."\">\n";
+            echo "<optgroup label=\"".
+                    $cat->getName() .
+                    "\">\n";
             printCatTree($children);
             echo "</optgroup>\n";
         }
@@ -38,6 +40,29 @@ function printCatTree($catTree)
                     ."</option>\n";
         }
     }
+}*/
+
+function printCatOptions($catTree, $categoriesArray)
+{
+    $return_string = "";
+    
+    foreach ($catTree as $cat)
+    {
+
+        $return_string .= "<option value=\""
+                .$cat->getId() 
+                ."\">"
+                . Category::catHierarchyString($categoriesArray, $cat)
+                ."</option>\n";
+        
+        $children = $cat->getChildren();
+        if (count($children))
+        {
+            $return_string .= printCatOptions($children, $categoriesArray);
+        }
+    }
+    
+    return $return_string;
 }
 
 ?>
@@ -62,7 +87,7 @@ function printCatTree($catTree)
             id="category-field"
             type="text"
             name="category">
-            <?=printCatTree($categories)?>
+            <?=printCatOptions($categories, $categoriesArray)?>
         </select>
     </p>
     <p>
