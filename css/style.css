@@ -21,468 +21,497 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 */
 
 
-@media only screen and (min-width: 1024px) {
+/**
+ * Regole per la gestione del layout (default view)
+ */
 
-    /**
-     * Regole per la gestione del layout (default view)
-     */
+body
+{
+    margin: 0;
+}
+#page
+{
+    width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 25px;
+    margin-bottom:25px;
 
-    body
-    {
-        margin: 0;
-    }
-    #page
-    {
-        width: 900px;
-        margin-left: auto;
-        margin-right: auto;
-        margin-top: 25px;
-        margin-bottom:25px;
-        
-        background-color: #F4F4F2;
-        font-family: Verdana, sans-serif;
-    }
-    
-    #logo
-    {
-        margin: 0;
-        padding: 1em;
+    background-color: #F4F4F2;
+    font-family: Verdana, sans-serif;
+}
 
-        background-color: #5B88A5;
+#logo
+{
+    margin: 0;
+    padding: 1em;
 
-        color: #F4F4F2;
-        text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
-        font-weight: bold;
-        font-size: 1.5em;
+    background-color: #5B88A5;
 
-    }
-       
-    #top-panel
-    {
-        overflow: hidden;
-        clear: both;
-        width: 100%;
+    color: #F4F4F2;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    font-weight: bold;
+    font-size: 1.5em;
 
-        background-color: #D4CDC5;
-        border-bottom: thick solid #5B88A5;
-    }
-    
-    #top-panel-nav
-    {
-        display: inline-block;
-        width: 50%;
-        float: left;        
-    }
+}
 
-    #nav-list
-    {
-        padding-left: 1em;
-        margin: 0;
-    }
-    
-    #nav-list li
-    {
-        display: inline-block;
-        margin-top: 0.2em;
-        margin-bottom: 0.2em;
-        margin-right: 0.5em;
-        
-        background-color: #5B88A5;
-        border: thin solid #D4CDC6;
-    }
-    
-    #nav-list li:hover
-    {
-        border: thin solid #FFAF37;
-    }
+#top-panel
+{
+    overflow: hidden;
+    clear: both;
+    width: 100%;
 
-    #nav-list li a
-    {
-        display: block;
-            
-        padding-left: 0.5em;
-        padding-right: 0.5em;
-        padding-bottom: 0.6em;
-        padding-top: 0.8em;
-        text-decoration: none;
-        color: #F4F4F2
-    }
+    background-color: #D4CDC5;
+    border-bottom: thick solid #5B88A5;
+}
 
-    #top-panel-user
-    {
-        text-align: right;
-        display: inline-block;
-        width: 50%;
-        float: right;
-        clear: right;
-    }
-    
-    #logged-in
-    {
-        padding-right: 1em;
-        padding-top: 0.8em;
-        padding-bottom: 0.6em;
-        margin: 0;
-        font-size: 0.9em;
-    }
-    
-    #login-form
-    {
-        padding-right: 1em;
-        padding-top: 0.8em;
-        padding-bottom: 0.6em;
-        margin: 0;
-    }
-    
-    #login-form label
-    {
-        font-size: 0.9em;
-    }
-    
-    #login-user, #login-pass
-    {
-        border-radius: 0.5em;
-    }
-        
-    #user-label
-    {
-        display: inline-block;
-    }
-    #login-user
-    {
-        display: inline-block;
-        width: 20%;
-    }
-    #pass-label
-    {
-        display: inline-block;
-    }
-    #login-pass
-    {
-        display: inline-block;
-        width: 20%;
-    }
-    
-    #login-button, #logout-button
-    {
-        border-radius: 0.5em;
-        background-color: #5B88A5;
-        color: #F4F4F2
-    }
-    
-    #left-panel
-    {
-        display: inline-block;
-        width: 18%;
-        float: left;
-        margin-top: 0.5em;
-        margin-bottom: 0.5em;
-        min-height: 250px;
+#top-panel-nav
+{
+    display: inline-block;
+    width: 50%;
+    float: left;        
+}
 
-        background-color: #D4CDC5;
-    }
+#nav-list
+{
+    padding-left: 1em;
+    margin: 0;
+}
 
-    #left-panel > h4
-    {
-        text-align: center;
-        padding-top: 0.2em;
-        padding-bottom: 0.2em;
-        margin: 0;
-        font-weight: normal;
-        border-bottom: thick solid #5B88A5;
-        border-top: thick solid #5B88A5;
-    }
-    
-    #admin-panel, #user-panel
-    {
-        text-align: center;
-        padding-top: 0.7em;
-        padding-left: 0;
-        padding-bottom: 0.7em;
-        margin: 0;
+#nav-list li
+{
+    display: inline-block;
+    margin-top: 0.2em;
+    margin-bottom: 0.2em;
+    margin-right: 0.5em;
 
-        list-style-type: none;
-    }
-    
-    #admin-panel li, #user-panel li
-    {
-        margin-left: 0.2em;
-        margin-right: 0.2em;
-        border: thin solid rgba(0, 0, 0, 0.0);
-    }
-    
-    #admin-panel li:hover, #user-panel li:hover
-    {
-        border: thin solid #FFAF37;
-    }
+    background-color: #5B88A5;
+    border: thin solid #D4CDC6;
+}
 
-    #admin-panel a, #user-panel a
-    {
-        display: block;
-        width:100%;
-        text-decoration: none;        
-        background-color: #5B88A5;
-        color: #F4F4F2;
-        
-        font-size: small;
-    }
-    
-    
-    #content
-    {
-        display: inline-block;
-        width: 82%;
-        clear: right;
-    }
-    
-    /**
-     * Gestione lista prodotti
-     */
-    
-    #products-list
-    {
-        margin: 0.5em;
-        margin-right: 0;
-        padding: 0;
-        list-style-type: none;
-        text-align: justify;               
-    }
-    
-    #products-list > li
-    {
-        display: inline-block;
-        width: 30%;
-        height: 185px;
-        padding: 5px;
-        margin-right: 0.5em;
-        margin-bottom: 0.5em;
-    
-        border: solid thin grey;
-        box-shadow: 2px 2px 1px #888888;
-        
-        overflow: auto;
-    }
-    
-    #products-list > li.invisible
-    {
-        display: none;
-    }
-    
-    .image-container
-    {
-        text-align: center;
-    }
-    
-    .product-image
-    {
-        display: inline-block;
-        width: 50%;
-    }    
-    
-    .product-name
-    {
-        font-size: 0.8em;
-        text-align: left;
-        margin: 0;
-        padding-top: 0.5em;
-        padding-bottom: 0.5em;
-    }
-    .product-category
-    {
-        font-size: 0.7em;
-        text-align: left;
-        margin: 0;
-        padding-top: 0.5em;
-        padding-bottom: 0.5em;
-    }
-    
-    #footer
-    {
-        width: 100%;
-        clear: both;
-        text-align: center;
-        padding-bottom: 0.5em;
+#nav-list li:hover
+{
+    border: thin solid #FFAF37;
+}
 
-        background-color: #5B88A5;
-    }
+#nav-list li a
+{
+    display: block;
 
-    #error-text
-    {
-        margin: 0;
-        padding-top: 1em;
-        color: #FFAF37;
-        font-size: 1.1em;
-    }
-    
-    #footer-text
-    {
-        margin: 0;
-        padding: 1em;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    padding-bottom: 0.6em;
+    padding-top: 0.8em;
+    text-decoration: none;
+    color: #F4F4F2
+}
 
-        color: #F4F4F2;
-    }
-    
-    /**
-     * Regole per implementare le liste ad albero a scomparsa.
-     */
+#top-panel-user
+{
+    text-align: right;
+    display: inline-block;
+    width: 50%;
+    float: right;
+    clear: right;
+}
 
-    ul.collapsible
-    {
-        padding-left: 0.7em;
-        padding-top: 0.7em;
-        padding-bottom: 0.7em;
-        margin: 0;
+#logged-in
+{
+    padding-right: 1em;
+    padding-top: 0.8em;
+    padding-bottom: 0.6em;
+    margin: 0;
+    font-size: 0.9em;
+}
 
-        list-style-type: none;
-    }
-    
-    ul.collapsible label
-    {
-        cursor: pointer;
-        font-size: 0.8em;
-    }
+#login-form
+{
+    padding-right: 1em;
+    padding-top: 0.8em;
+    padding-bottom: 0.6em;
+    margin: 0;
+}
 
-    ul.collapsible ul.collapsible
-    {
-        min-height: 0;
-        padding-left: 20px;
-        padding-top: 0;
-        padding-bottom: 0;
-    }
+#login-form label
+{
+    font-size: 0.9em;
+}
 
-    ul.collapsible > li > input[type="checkbox"]
-    {
-        display: none;
-    }
+#login-user, #login-pass
+{
+    border-radius: 0.5em;
+}
 
-    ul.collapsible > li > input[type="checkbox"]  + label
-    {
-        font-weight: bold;
-    }
+#user-label
+{
+    display: inline-block;
+}
+#login-user
+{
+    display: inline-block;
+    width: 20%;
+}
+#pass-label
+{
+    display: inline-block;
+}
+#login-pass
+{
+    display: inline-block;
+    width: 20%;
+}
 
-    ul.collapsible > li > input[type="checkbox"]  + label:before
-    {
-        content: "\25be ";
-    }
+#login-button, #logout-button
+{
+    border-radius: 0.5em;
+    background-color: #5B88A5;
+    color: #F4F4F2
+}
 
-    ul.collapsible > li > input[type="checkbox"]:checked  + label:before
-    {
-        content: "\25b8 ";
-    }
+#left-panel
+{
+    display: inline-block;
+    width: 18%;
+    float: left;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    min-height: 250px;
 
-    ul.collapsible > li > input[type="checkbox"]:checked ~ ul *
-    {
-        display: none;
-    }
+    background-color: #D4CDC5;
+}
 
-    /**
-     * Regole per la gestione del layout (user view)
-     */
-    
-    
-    #categories-edit > .contentform
-    {
-        margin-top: 0.5em;
-        border-top: #5B88A5 thick solid;
-        padding-top: 1em;
-        margin-bottom: 0;
-    }
-    
-    .contentform
-    {
-        margin: 1em;
-        margin-right: 0;
-    }
-    
-    .contentform > p
-    {
-        display: inline-block;
-        width: 100%;        
-        text-align: right;
-        margin: 0;
-        padding-bottom: 0.2em;
-    }
+#left-panel > h4
+{
+    text-align: center;
+    padding-top: 0.2em;
+    padding-bottom: 0.2em;
+    margin: 0;
+    font-weight: normal;
+    border-bottom: thick solid #5B88A5;
+    border-top: thick solid #5B88A5;
+}
 
-    .contentform > .submit-paragraph
-    {
-        padding-top: 1em;
-        text-align: center;
-    }    
+#admin-panel, #user-panel
+{
+    text-align: center;
+    padding-top: 0.7em;
+    padding-left: 0;
+    padding-bottom: 0.7em;
+    margin: 0;
 
-    #delcat-form > .submit-paragraph
-    {
-        border: #FFAF37 solid thin;
-        margin-bottom: 0.5em;
-    }    
-    
-    .contentform > p > label
-    {
-        display: inline-block;
-        width: 20%;
-        text-align: left;
-    }
-    
-    .contentform > p > textarea,
-    .contentform > p > select ,
-    .contentform > p > input
-    {
-        display: inline-block;
-        width: 50%;
-        margin-right: 15%;
-        box-sizing: border-box;
-        text-align: left;
-    }
-    
-    .contentform > p > input[type="submit"]
-    {
-        margin: 1em;
-    }
-    
-    .contentform > p > #description-field
-    {
-        resize: vertical;
-    }
+    list-style-type: none;
+}
 
-    .contentform > p > #qty-field
-    {
-        width: 10%;        
-        margin-right: 55%;
-    }
-    
-    .contentform > p > #category-field
-    {
-        width: 40%;        
-        margin-right: 25%;
-    }
+#admin-panel li, #user-panel li
+{
+    margin-left: 0.2em;
+    margin-right: 0.2em;
+    border: thin solid rgba(0, 0, 0, 0.0);
+}
 
-    .contentform > p > input[type="submit"]
-    {
-        width: auto;
-        border-radius: 0.5em;
-        background-color: #5B88A5;
-        color: #F4F4F2;
-    }
+#admin-panel li:hover, #user-panel li:hover
+{
+    border: thin solid #FFAF37;
+}
 
-    
-    #css-validator,
-    #xhtml-validator
-    {
-        padding-left: 20px;
-        margin-left: 10px;
-        text-decoration: none;
-        color: #F4F4F2;
-    }
-    
-    #xhtml-validator
-    {
-        background: url('../images/img19.gif') no-repeat left center;
-    }
-    
-    #css-validator
-    {
-        background: url('../images/img20.gif') no-repeat left center;
-    }
+#admin-panel a, #user-panel a
+{
+    display: block;
+    width:100%;
+    text-decoration: none;        
+    background-color: #5B88A5;
+    color: #F4F4F2;
+
+    font-size: small;
+}
 
 
- 
+#content
+{
+    display: inline-block;
+    width: 82%;
+    clear: right;
+}
+
+/**
+ * Gestione lista prodotti
+ */
+
+#products-list
+{
+    margin: 0.5em;
+    margin-right: 0;
+    padding: 0;
+    list-style-type: none;
+    text-align: justify;               
+}
+
+#products-list > li
+{
+    display: inline-block;
+    width: 30%;
+    height: 185px;
+    padding: 5px;
+    margin-right: 0.5em;
+    margin-bottom: 0.5em;
+
+    border: solid thin grey;
+    box-shadow: 2px 2px 1px #888888;
+
+    overflow: auto;
+}
+
+#products-list > li.invisible
+{
+    display: none;
+}
+
+.image-container
+{
+    text-align: center;
+}
+
+.product-image
+{
+    display: inline-block;
+    width: 50%;
+}    
+
+.product-name
+{
+    font-size: 0.8em;
+    text-align: left;
+    margin: 0;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+}
+.product-category
+{
+    font-size: 0.7em;
+    text-align: left;
+    margin: 0;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+}
+
+#footer
+{
+    width: 100%;
+    clear: both;
+    text-align: center;
+    padding-bottom: 0.5em;
+
+    background-color: #5B88A5;
+}
+
+#error-text
+{
+    margin: 0;
+    padding-top: 1em;
+    color: #FFAF37;
+    font-size: 1.1em;
+}
+
+#footer-text
+{
+    margin: 0;
+    padding: 1em;
+
+    color: #F4F4F2;
+}
+
+/**
+ * Regole per implementare le liste ad albero a scomparsa.
+ */
+
+ul.collapsible
+{
+    padding-left: 0.7em;
+    padding-top: 0.7em;
+    padding-bottom: 0.7em;
+    margin: 0;
+
+    list-style-type: none;
+}
+
+ul.collapsible label
+{
+    cursor: pointer;
+    font-size: 0.8em;
+}
+
+ul.collapsible ul.collapsible
+{
+    min-height: 0;
+    padding-left: 20px;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+ul.collapsible > li > input[type="checkbox"]
+{
+    display: none;
+}
+
+ul.collapsible > li > input[type="checkbox"]  + label
+{
+    font-weight: bold;
+}
+
+ul.collapsible > li > input[type="checkbox"]  + label:before
+{
+    content: "\25be ";
+}
+
+ul.collapsible > li > input[type="checkbox"]:checked  + label:before
+{
+    content: "\25b8 ";
+}
+
+ul.collapsible > li > input[type="checkbox"]:checked ~ ul *
+{
+    display: none;
+}
+
+/**
+ * Regole per la gestione del layout (user view)
+ */
+
+
+#categories-edit > .contentform
+{
+    margin-top: 0.5em;
+    border-top: #5B88A5 thick solid;
+    padding-top: 1em;
+    margin-bottom: 0;
+}
+
+.contentform
+{
+    margin: 1em;
+    margin-right: 0;
+}
+
+.contentform > p
+{
+    display: inline-block;
+    width: 100%;        
+    text-align: right;
+    margin: 0;
+    padding-bottom: 0.2em;
+}
+
+.contentform > .submit-paragraph
+{
+    padding-top: 1em;
+    text-align: center;
+}    
+
+#delcat-form > .submit-paragraph
+{
+    border: #FFAF37 solid thin;
+    margin-bottom: 0.5em;
+}    
+
+.contentform > p > label
+{
+    display: inline-block;
+    width: 20%;
+    text-align: left;
+}
+
+.contentform > p > textarea,
+.contentform > p > select ,
+.contentform > p > input
+{
+    display: inline-block;
+    width: 50%;
+    margin-right: 15%;
+    box-sizing: border-box;
+    text-align: left;
+}
+
+.contentform > p > input[type="submit"]
+{
+    margin: 1em;
+}
+
+.contentform > p > #description-field
+{
+    resize: vertical;
+}
+
+.contentform > p > #qty-field
+{
+    width: 10%;        
+    margin-right: 55%;
+}
+
+.contentform > p > #category-field
+{
+    width: 40%;        
+    margin-right: 25%;
+}
+
+.contentform > p > input[type="submit"]
+{
+    width: auto;
+    border-radius: 0.5em;
+    background-color: #5B88A5;
+    color: #F4F4F2;
+}
+
+
+#css-validator,
+#xhtml-validator
+{
+    padding-left: 20px;
+    margin-left: 10px;
+    text-decoration: none;
+    color: #F4F4F2;
+}
+
+#xhtml-validator
+{
+    background: url('../images/img19.gif') no-repeat left center;
+}
+
+#css-validator
+{
+    background: url('../images/img20.gif') no-repeat left center;
+}
+
+#info
+{
+    margin: 0.5em;
+    margin-right: 0;
+}
+
+.overline
+{
+    border-top: #5B88A5 thick solid;
+    border-bottom: #5B88A5 thick solid;
+}
+
+.main-title
+{
+    text-align: center;
+    padding: 1em;
+    background: #5B88A5;
+    color: #F4F4F2;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    font-weight: bold;
+    font-size: 1.5em;
+}
+
+.sub-title
+{
+    padding: 0.5em;
+    padding-left: 1em;
+    font-weight: bold;
+}
+
+.info-text
+{
+    font-size: 0.9em;
 }
