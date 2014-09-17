@@ -64,7 +64,7 @@ class User {
      */
     public static function getUsers()
     {
-        include_once __DIR__."/../Database.php";
+        require_once __DIR__."/../Database.php";
         $return_array = array();
         
         Database::safeStart();
@@ -90,7 +90,7 @@ class User {
      */
     public static function getUserByUsername($username)
     {
-        include_once "Database.php";
+        require_once __DIR__."/../Database.php";
         
         Database::safeStart();
         
@@ -138,7 +138,7 @@ class User {
      */
     public function updatePass()
     {
-        include_once "Database.php";
+        require_once __DIR__."/../Database.php";
         
         Database::safeStart();
         
@@ -155,20 +155,22 @@ class User {
      */
     public function updateData()
     {
-        include_once "Database.php";
+        require_once __DIR__."/../Database.php";
         
         Database::safeStart();
         
         $stmt = Database::$mysqli->stmt_init();
+
         $query = "UPDATE users SET"
                 ." name=?,"
                 ." last_name=?,"
                 ." address=?"
                 ." WHERE id=?";
+
         $stmt->prepare($query);
-        echo $stmt->error;
         $stmt->bind_param("ssss",
                 $this->name, $this->last_name, $this->address, $this->id);
+
         $stmt->execute();
         
     }
