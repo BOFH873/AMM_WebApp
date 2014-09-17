@@ -110,7 +110,8 @@
         Il click sulla categoria espande o collassa le sottocategorie (il
         "doppio effetto" del click può risultare fastidioso, ma non ho fatto in
         tempo a escogitare un modo per ridurre l'area clickabile dei
-        label).<br/>
+        label). L'effetto mostra/nascondi è implementato esclusivamente mediante
+        l'utilizzo di CSS.<br/>
     </p>
     <p class="sub-title overline">Link/Credenziali</p>
     <p class="info-text">
