@@ -116,14 +116,10 @@
     <p class="info-text">
         La home page dell'applicazione si trova a 
         <a href="<?=$appPath?>/home">questo indirizzo</a>.
-        Nel database sono presenti due utenti semplici:<br/>
-        <ul>
-            <li><code>user: pippo | password: pippobaudo123</code></li>
-            <li><code>user: pluto | password: plutocane</code></li>            
-        </ul>
-        e un utente Amministratore:
-        <ul>
-            <li><code>user: admin | password: ppabew_mma</code></li>
-        </ul>
+        Nel database sono presenti due utenti semplici:<br/><br/>
+        <code>user: pippo | password: pippobaudo123</code><br/>
+        <code>user: pluto | password: plutocane</code><br/><br/> 
+        e un utente Amministratore:<br/><br/>
+        <code>user: admin | password: ppabew_mma</code>
     </p>
 </div>
