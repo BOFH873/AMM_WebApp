@@ -34,7 +34,7 @@ function printCat($cat)
 {
         $string = "<li>\n";
 
-        $labelString = "<label>\n";
+        $labelString = "<label for=\"cat".$cat->getId()."\">\n";
         $labelString .= $cat->getName()."\n";
         $labelString .= "</label>\n";
         
@@ -67,7 +67,7 @@ if (isset($_SESSION["id"]))
 <ul id="admin-panel">
     <li><a href="<?=$appPath?>/newproduct">New Product</a></li>
     <li><a href="<?=$appPath?>/editcat">Edit Categories</a></li>
-    <li><a href="<?=$appPath?>/resetdb">&#x2620;Reset DB&#x2620;</a></li>
+    <li><a href="<?=$appPath?>/resetdb">&#x2620Reset DB&#x2620</a></li>
 </ul>
         <?php
     }
@@ -80,4 +80,6 @@ if (isset($_SESSION["id"]))
 }
 ?>
 <h4 id="categories-list-title">Categories</h4>
+<form>
 <?= printCatArray($categories) ?>
+</form>
