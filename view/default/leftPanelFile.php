@@ -34,19 +34,23 @@ function printCat($cat)
 {
         $string = "<li>\n";
 
-        $labelString = "<label for=\"cat".$cat->getId()."\">\n";
-        $labelString .= $cat->getName()."\n";
-        $labelString .= "</label>\n";
-        
         if (count($cat->getChildren()))
         {
-            $string .= "<input name=\"cat".$cat->getId()."\" type=\"checkbox\""
+            $labelString = "<label for=\"cat".$cat->getId()."\">\n";
+            $labelString .= $cat->getName()."\n";
+            $labelString .= "</label>\n";
+        
+            $string .= "<input id=\"cat".$cat->getId()."\" type=\"checkbox\""
                     . " checked>\n";
             $string .= $labelString;
             $string .= printCatArray($cat->getChildren());
         }
         else
         {
+            $labelString = "<label>\n";
+            $labelString .= $cat->getName()."\n";
+            $labelString .= "</label>\n";
+        
             $string .= $labelString;
         }
 
@@ -67,7 +71,7 @@ if (isset($_SESSION["id"]))
 <ul id="admin-panel">
     <li><a href="<?=$appPath?>/newproduct">New Product</a></li>
     <li><a href="<?=$appPath?>/editcat">Edit Categories</a></li>
-    <li><a href="<?=$appPath?>/resetdb">&#x2620Reset DB&#x2620</a></li>
+    <li><a href="<?=$appPath?>/resetdb">&#x2620;Reset DB&#x2620;</a></li>
 </ul>
         <?php
     }
