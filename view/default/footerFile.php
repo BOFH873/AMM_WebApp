@@ -34,3 +34,15 @@
     Progetto realizzato interamente con NetBeans.<br/>
     Autore: Davide Salaris<br/>
 </p>
+<div id="validators">
+<a href="http://validator.w3.org/check/referer"
+   id="xhtml-validator">
+    <abbr title="eXtensible HyperText Markup Language">HTML</abbr>
+    Valid
+</a>
+<a href="http://jigsaw.w3.org/css-validator/check/referer"
+   id="css-validator">
+    <abbr title="Cascading Style Sheets">CSS</abbr>
+    Valid
+</a>
+</div>
