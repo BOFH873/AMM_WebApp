@@ -6,6 +6,7 @@ RewriteEngine  on
 RewriteRule    ^/?deploy\.php$ - [END]
 
 RewriteRule    ^/?css/.+$ - [END]
+RewriteRule    ^/?scripts/.+$ - [END]
 
 RewriteRule    ^/?images/[^/]+$ - [END]
 RewriteRule    ^images(/([^/]*)/?(.*))?$ controller/images.php?type=$2&id=$3 [END]
