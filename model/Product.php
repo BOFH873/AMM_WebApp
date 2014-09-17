@@ -81,7 +81,7 @@ class Product {
         if (!$disabled) { $disabled_string = " WHERE disabled=false"; }
         else { $disabled_string = "";}
         
-        include_once __DIR__."/../Database.php";
+        require_once __DIR__."/../Database.php";
         $return_array = array();
         
         Database::safeStart();
@@ -118,7 +118,7 @@ class Product {
      */
     public static function getProductsByName($pattern)
     {
-        include_once __DIR__."/../Database.php";
+        require_once __DIR__."/../Database.php";
         $return_array = array();
         
         Database::safeStart();
@@ -172,7 +172,7 @@ class Product {
      */
     public static function getProductByID($id)
     {
-        include_once __DIR__."/../Database.php";
+        require_once __DIR__."/../Database.php";
 
         Database::safeStart();
 
@@ -215,9 +215,24 @@ class Product {
         return false;
     }
     
+    public static function deleteProductsFromCategory($category)
+    {
+        require_once __DIR__."/../Database.php";
+        require_once __DIR__."/Category.php";
+        
+        Database::safeStart();
+        
+        $query = "DELETE FROM products WHERE category_id IN ("
+                . Category::catChildIdString($category)
+                . "-1);";
+
+        Database::$mysqli->query($query);
+        
+    }
+    
     public static function uploadNewProduct($newProduct)
     {
-        include_once __DIR__."/../Database.php";
+        require_once __DIR__."/../Database.php";
 
         Database::safeStart();
 
