@@ -25,6 +25,8 @@
     
     $maxvisible = 9;
     
+    shuffle($products);
+    
     for($i=0;$i < count($products); $i++)
     {
         $string = "<li";
@@ -45,7 +47,8 @@
         {
             if ($category->getId() == $products[$i]->getCategory_id())
             {
-                $catName = $category->getName();
+                $catName = Category::catHierarchyString($categoriesArray,
+                        $category);
                 break;
             }
         }
