@@ -215,6 +215,45 @@ class Product {
         return false;
     }
     
+    public static function getProductByCat($category)
+    {
+
+        require_once __DIR__."/../Database.php";
+        require_once __DIR__."/Category.php";
+        
+        Database::safeStart();
+        
+        $query = "DELETE FROM products WHERE category_id IN ("
+                . Category::catChildIdString($category)
+                . "-1);";
+
+        $query = "SELECT"
+                . " id,"
+                . " name,"
+                . " stock_qty,"
+                . " category_id,"
+                . " price,"
+                . " description,"
+                . " picture,"
+                . " mimetype,"
+                . " disabled"
+                . " FROM products"
+                . " WHERE category_id IN ("
+                . Category::catChildIdString($category)
+                . "-1)"
+                . " LIMIT 9;";
+
+        $result = Database::$mysqli->query($query);
+
+        $return_array = array();
+        
+        while ($row = $result->fetch_object()) {
+            $return_array[] = new Product($row);
+        }
+        
+        return $return_array;
+    }
+
     public static function deleteProductsFromCategory($category)
     {
         require_once __DIR__."/../Database.php";
