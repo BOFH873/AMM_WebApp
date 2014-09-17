@@ -20,6 +20,6 @@
 ?>
 
 <ul id="nav-list">
-    <li class="nav-list-active"><a href="<?=$appPath?>/">Home</a></li>
-    <li class="nav-list-inactive"><a href="<?=$appPath?>/search">Product Search</a></li>
+    <li class="nav-list-active"><a href="<?=$appPath?>/home">Home</a></li>
+    <li class="nav-list-inactive"><a href="<?=$appPath?>/info">Info Progetto</a></li>
 </ul>
