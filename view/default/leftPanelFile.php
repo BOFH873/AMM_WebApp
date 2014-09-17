@@ -36,7 +36,8 @@ function printCat($cat)
 
         if (count($cat->getChildren()))
         {
-            $labelString = "<label for=\"cat".$cat->getId()."\">\n";
+            $labelString = "<label for=\"cat".$cat->getId()."\""
+                    . " data-category=\"".$cat->getId()."\">\n";
             $labelString .= $cat->getName()."\n";
             $labelString .= "</label>\n";
         
@@ -47,7 +48,7 @@ function printCat($cat)
         }
         else
         {
-            $labelString = "<label>\n";
+            $labelString = "<label data-category=\"".$cat->getId()."\">\n";
             $labelString .= $cat->getName()."\n";
             $labelString .= "</label>\n";
         
