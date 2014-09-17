@@ -65,7 +65,7 @@ class Transaction {
      */
     public static function getTransactions()
     {
-        include_once __DIR__."/../Database.php";
+        require_once __DIR__."/../Database.php";
         $return_array = array();
         
         Database::safeStart();
@@ -91,7 +91,7 @@ class Transaction {
      */
     public static function getTransactionsByID($user_id)
     {
-        include_once "Database.php";
+        require_once __DIR__."/../Database.php";
         
         Database::safeStart();
         
