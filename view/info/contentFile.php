@@ -123,4 +123,10 @@
         e un utente Amministratore:<br/><br/>
         <code>user: admin | password: ppabew_mma</code>
     </p>
+    <p class="sub-title overline">Note</p>
+    <p class="info-text">
+        L'applicazione è stata testata solamente su Google Chrome, potrebbe non
+        essere visualizzata correttamente da browser che non utilizzano webkit
+        per il rendering.
+    </p>
 </div>
