@@ -32,7 +32,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         <?php
             foreach ($vd->getScripts() as $script) {
         ?>
-        <script type="text/javascript" src="<?=$appPath?>/<?= $script ?>">
+        <script type="text/javascript" src="<?= $script ?>">
         </script>
         <?php
             }
