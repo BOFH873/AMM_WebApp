@@ -18,8 +18,8 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-include_once __DIR__."/../Database.php";
-include_once __DIR__."/../model/Product.php";
+require_once __DIR__."/../Database.php";
+require_once __DIR__."/../model/Product.php";
 
 switch ($_REQUEST["type"]) {
 
